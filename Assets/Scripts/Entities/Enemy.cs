@@ -52,6 +52,7 @@ public class Enemy : MonoBehaviour
 			Destroy(gameObject);
 			GameController.Instance.IncrementScore();
 			PlayerManager.Instance.AddAmmo();
+            PlayerManager.Instance.increaseStreak();
 		}
 	}
 }

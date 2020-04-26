@@ -72,7 +72,7 @@ public class PlayerManager : MonoBehaviour
 		health = 100;
 		speed = 1.25f;
 	}
-    public void increaseStreak(int needed)
+    public void increaseStreak()
     {
         if (streak < needed){
             streak += 1;

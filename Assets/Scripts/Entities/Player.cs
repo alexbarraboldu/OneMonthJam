@@ -15,7 +15,6 @@ public class Player : MonoBehaviour
 	[Header("Counters for player:")]
 	[Space(5)]
 	public float dmgCounter = 100f;
-	private float initialDmgCounter = 0;
 
 	[Header("Variables for guns:")]
 	[Space(10)]

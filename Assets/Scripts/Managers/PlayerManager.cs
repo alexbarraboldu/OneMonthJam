@@ -17,11 +17,21 @@ public class PlayerManager : MonoBehaviour
 	public float speed;
 	public Vector2 PlayerPosition;
     public int streak;
+    public int lvl;
+    public int needed;
 
+    //SKINS
+    public Sprite lvl1;
+    public Sprite lvl2;
+    public Sprite lvl3;
+    public Sprite lvl4;
+    public Sprite lvl5;
 
     void Start()
 	{
+        needed = 5;
         streak = 0;
+        lvl = 0;
 		if (Instance == null)
 		{
 			Instance = this;
@@ -59,14 +69,48 @@ public class PlayerManager : MonoBehaviour
 		health = 100;
 		speed = 1.25f;
 	}
-    public void increaseStreake()
+    public void increaseStreak(int needed)
     {
-        if (streak < 5)
-        {
+        if (streak < needed){
             streak += 1;
         }
-        else{
-            SkinController.upgradeSkin();
+        else if (streak == needed && lvl <= 5){
+            streak = 0;
+            if (lvl < 5){
+                lvl += 1;
+                UpgradeSkin();
+            }
+            else{
+                //el level ya es el maximo;
+            }
+        }
+    }
+    void UpgradeSkin()
+    {
+        switch (lvl)
+        {
+            case 1:
+                FindObjectOfType<SkinController>().GetComponent<SpriteRenderer>().sprite = lvl1;
+                needed = 5;
+                break;
+            case 2:
+                FindObjectOfType<SkinController>().GetComponent<SpriteRenderer>().sprite = lvl2;
+                needed = 7;
+                break;
+            case 3:
+                FindObjectOfType<SkinController>().GetComponent<SpriteRenderer>().sprite = lvl3;
+                needed = 9;
+                break;
+            case 4:
+                FindObjectOfType<SkinController>().GetComponent<SpriteRenderer>().sprite = lvl4;
+                needed = 11;
+                break;
+            case 5:
+                FindObjectOfType<SkinController>().GetComponent<SpriteRenderer>().sprite = lvl5;
+                needed = 13;
+                break;
+            default:
+                break;
         }
     }
 }

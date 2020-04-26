@@ -61,4 +61,27 @@ public class AudioManager : MonoBehaviour
 
         return s.source.volume;
     }
+    public void StopMusic()
+    {
+        Sound GameMusic = Array.Find(sounds, sound => sound.name == "GameMusic");
+        Sound MenuMusic = Array.Find(sounds, sound => sound.name == "MenuMusic");
+        if (GameMusic == null)
+            return;
+        if (MenuMusic == null)
+            return;
+        GameMusic.source.Stop();
+        MenuMusic.source.Stop();
+        GameMusic.source.volume = 0;
+        MenuMusic.source.volume = 0;
+    }
+    public void StopAll()
+    {
+        foreach (Sound s in sounds)
+        {
+            s.source.Stop();
+            s.source.volume = 0;
+        }
+       
+        
+    }
 }

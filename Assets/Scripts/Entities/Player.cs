@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
 	public Transform firePoint;
 	public GameObject bullet;
 	public Vector2 bulletSpeed;
+	public float fireRate;
 	public float range;
 	//  VARIABLES FOR GUNS
 	private Rigidbody2D rb2dBullet;
@@ -70,7 +71,11 @@ public class Player : MonoBehaviour
 		//SpawnerManager.Instance.Spawner();
 		//SpawnerManager.Instance.EnemyChecker();
 
-		if (Input.GetMouseButton(1))/*if (Input.GetKeyDown(KeyCode.Space))*/Shooting();
+		if (Counter >= initialBulletTime && Input.GetMouseButton(1))
+		{
+			Shooting();
+			initialBulletTime = Counter + fireRate;
+		}
 	}
 
 	void PlayerMovement()

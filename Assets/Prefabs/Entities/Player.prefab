@@ -196,5 +196,6 @@ MonoBehaviour:
   dmgCounter: 100
   firePoint: {fileID: 2186328379168271304}
   bullet: {fileID: 767959860981413116, guid: bc8a17b7126f62743bbc986b520ef614, type: 3}
-  bulletSpeed: {x: 1, y: 1}
-  range: 5
+  bulletSpeed: {x: 20, y: 20}
+  fireRate: 2
+  range: 2

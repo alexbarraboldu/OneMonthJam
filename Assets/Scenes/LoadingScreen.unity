@@ -317,6 +317,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerManager
       objectReference: {fileID: 0}
+    - target: {fileID: 8000889822608860367, guid: aeb0b218a24e43747973b81c9fa3ca7d,
+        type: 3}
+      propertyPath: lvl1
+      value: 
+      objectReference: {fileID: 21300000, guid: 2f281819d99427d4cb1e90bdbc444b3a,
+        type: 3}
+    - target: {fileID: 8000889822608860367, guid: aeb0b218a24e43747973b81c9fa3ca7d,
+        type: 3}
+      propertyPath: lvl2
+      value: 
+      objectReference: {fileID: 21300000, guid: 954f2021a43f0774ea110f55d387ed1d,
+        type: 3}
+    - target: {fileID: 8000889822608860367, guid: aeb0b218a24e43747973b81c9fa3ca7d,
+        type: 3}
+      propertyPath: lvl3
+      value: 
+      objectReference: {fileID: 21300000, guid: 9e5d9cdd136b9ab4d8ed27537b10ff80,
+        type: 3}
+    - target: {fileID: 8000889822608860367, guid: aeb0b218a24e43747973b81c9fa3ca7d,
+        type: 3}
+      propertyPath: lvl4
+      value: 
+      objectReference: {fileID: 21300000, guid: 2ca0696af14e44c4b96d98bb15db8914,
+        type: 3}
+    - target: {fileID: 8000889822608860367, guid: aeb0b218a24e43747973b81c9fa3ca7d,
+        type: 3}
+      propertyPath: lvl5
+      value: 
+      objectReference: {fileID: 21300000, guid: 63a48f6f223c2e34baaacac8eee1e6c1,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aeb0b218a24e43747973b81c9fa3ca7d, type: 3}
 --- !u!1001 &9166973133497592086

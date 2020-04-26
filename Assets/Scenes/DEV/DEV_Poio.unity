@@ -142,68 +142,74 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - name: Player_Death
-    clip: {fileID: 0}
+  - name: Propulsion
+    clip: {fileID: 8300000, guid: 0fa03514d8db65e48afca5d6ea93f5cc, type: 3}
     volume: 0
     pitch: 0
     loop: 0
     source: {fileID: 0}
   - name: Enemy_Death
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 44f800c46302ab146983e8bb5ee18c19, type: 3}
     volume: 0
     pitch: 0
     loop: 0
     source: {fileID: 0}
-  - name: Node_Death
-    clip: {fileID: 0}
+  - name: Core_Death
+    clip: {fileID: 8300000, guid: efc5a33d0b4d4524d9efc73737ffd1d2, type: 3}
     volume: 0
     pitch: 0
     loop: 0
     source: {fileID: 0}
-  - name: Fake_Node_Death
-    clip: {fileID: 0}
+  - name: Fake_Core_Death
+    clip: {fileID: 8300000, guid: a18c1ab3a4f1db444a347b1f68be47c4, type: 3}
     volume: 0
     pitch: 0
     loop: 0
     source: {fileID: 0}
-  - name: Propulsion
-    clip: {fileID: 0}
+  - name: GameOver
+    clip: {fileID: 8300000, guid: e1b4675c59b367547870bd8592036dc7, type: 3}
     volume: 0
     pitch: 0
     loop: 0
     source: {fileID: 0}
   - name: Shoot
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 612b2e0ae1a867749a58e394fce09cb7, type: 3}
     volume: 0
     pitch: 0
     loop: 0
     source: {fileID: 0}
-  - name: Level_Evolution
-    clip: {fileID: 0}
+  - name: Player_Upgrade
+    clip: {fileID: 8300000, guid: 60a48184b6d913548a91ddd8436f2f87, type: 3}
     volume: 0
     pitch: 0
     loop: 0
     source: {fileID: 0}
   - name: Impact
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 984907b33108400478c479ed64182e46, type: 3}
     volume: 0
     pitch: 0
     loop: 0
     source: {fileID: 0}
   - name: GameMusic
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: 52c8d7e256fbeda4690656f6cd60e0ce, type: 3}
     volume: 0
     pitch: 0
     loop: 0
     source: {fileID: 0}
   - name: MenuMusic
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: dc89e4219d0535f4585bd73763b15893, type: 3}
     volume: 0
     pitch: 0
     loop: 0
     source: {fileID: 0}
-  - name: Hiscore
-    clip: {fileID: 0}
+  - name: Player_Downgrade
+    clip: {fileID: 8300000, guid: a6cccc84df46f9a44a35ad7f214727ff, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+    source: {fileID: 0}
+  - name: GameOverMusic
+    clip: {fileID: 8300000, guid: a6cccc84df46f9a44a35ad7f214727ff, type: 3}
     volume: 0
     pitch: 0
     loop: 0

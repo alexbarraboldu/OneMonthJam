@@ -8,8 +8,9 @@ using System.IO;
 public class GameController : MonoBehaviour
 {
     public static GameController Instance { get; private set; }
-    
-    public int hiscore = 0;
+
+    public int score;
+    public int hiscore;
     public int record;
 
     void Awake()
@@ -43,7 +44,7 @@ public class GameController : MonoBehaviour
         string hiscorestring = reader.ReadLine();
         hiscore = int.Parse(hiscorestring);
         reader.Close();
-       // BeginGame();
+        // BeginGame();
 
     }
 
@@ -77,4 +78,5 @@ public class GameController : MonoBehaviour
             writer.Close();
         }
     }
-    
+
+}

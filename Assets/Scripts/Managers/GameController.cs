@@ -7,28 +7,34 @@ using System.IO;
 
 public class GameController : MonoBehaviour
 {
-    public static GameController instance { get; private set; }
-
-    public int lives;
-
-    public int hiscore = 0;
-    public int record;
-    public bool isrecord;
-
-    public float energy;
-
-    public bool GameON;
+    public int score;
+    public int hiscore;
+    public static GameController Instance { get; private set; }
+    
 
     void Awake()
     {
-        DontDestroyOnLoad(gameObject);
-        if (instance == null)
-            instance = this;
-        else
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else if (Instance != this)
         {
             Destroy(gameObject);
-            return;
         }
+        
+        DontDestroyOnLoad(gameObject);
+    }
+    // Start is called before the first frame update
+    void Start()
+    {
+        FindObjectOfType<AudioManager>().Play("MenuMusic");
+        StreamReader reader = new StreamReader("Hiscore.txt");
+        string hiscorestring = reader.ReadLine();
+        hiscore = int.Parse(hiscorestring);
+        reader.Close();
+        BeginGame();
+        
     }
 
     // Update is called once per frame
@@ -38,12 +44,27 @@ public class GameController : MonoBehaviour
             Application.Quit();
     }
 
-    void FixedUpdate()
+    public void BeginGame()
     {
-        if (hiscore > record) { isrecord = true; record = hiscore; }
-        if (GameON == true)
+        score = 0;
+        //scoreController.Instance.textScore.text = "PUNTOS:" + score;
+        //scoreController.Instance.textHiscore.text = "META: " + hiscore;
+        
+    }
+    public void IncrementScore()
+    {
+        score++;
+
+        //scoreController.Instance.textScore.text = "PUNTOS:" + score;
+        if (score > hiscore)
         {
-            hiscore += 1;
+            hiscore = Instance.score;
+            //scoreController.Instance.textHiscore.text = "META: " + hiscore;
+
+            // Save the new hiscore
+            StreamWriter writer = new StreamWriter("Hiscore.txt", true);
+            writer.Write(hiscore);
+            writer.Close();
         }
     }
 }

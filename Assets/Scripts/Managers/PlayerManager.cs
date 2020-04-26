@@ -17,14 +17,6 @@ public class PlayerManager : MonoBehaviour
 	public float speed;
 	public Vector2 PlayerPosition;
 
-    private void Victory()
-    {
-        //PlayerSceneManager.Instance.goFrontScene(SceneManager.GetActiveScene().buildIndex);
-    }
-    public void SetPlayerPosition(Vector2 position)
-    {
-        PlayerPosition = position;
-    }
 	void Start()
 	{
 		if (Instance == null)
@@ -38,15 +30,6 @@ public class PlayerManager : MonoBehaviour
 		}
 	}
 
-    public Vector2 GetPlayerPosition()
-    {
-        return PlayerPosition;
-    }
-    public void reset()
-    {
-        health = 100;
-        speed = 1.25f;
-    }
 	//private void Update()
 	//{
 	//    //if (SceneManager.GetActiveScene().name == "DEV_TileMap-ZonaHostil-3" && SpawnerManager.Instance.ActualRound >= 5)

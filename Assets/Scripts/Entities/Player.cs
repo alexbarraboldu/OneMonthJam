@@ -58,10 +58,10 @@ public class Player : MonoBehaviour
 	{
         //SoundManager.Instance.PlaySound(SoundManager.Sounds.PlayerDie);
         Destroy(gameObject);
-        FindObjectOfType<AudioManager>().Play("GameOver");
+		FindObjectOfType<AudioManager>().Stop("GameMusic");
+		FindObjectOfType<AudioManager>().Play("GameOver");
         //MusicManager.Instance.PlaySong(MusicManager.Songs.GameOver);
         //PlayerSceneManager.Instance.goLastScene();
-        FindObjectOfType<AudioManager>().Stop("GameMusic");
 
     }
 
@@ -72,9 +72,6 @@ public class Player : MonoBehaviour
 		PlayerMovement();
 		PlayerManager.Instance.SetPlayerPosition(transform.position);
 		PlayerAim();
-
-		//SpawnerManager.Instance.Spawner();
-		//SpawnerManager.Instance.EnemyChecker();
 
 		if (Counter >= initialBulletTime && Input.GetMouseButton(1))
 		{

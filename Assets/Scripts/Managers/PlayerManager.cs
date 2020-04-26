@@ -15,6 +15,7 @@ public class PlayerManager : MonoBehaviour
 	[Header("Variables for player:")]
 	public float health;
 	public float speed;
+	public int ammo;
 	public Vector2 PlayerPosition;
     public int streak;
 
@@ -69,4 +70,9 @@ public class PlayerManager : MonoBehaviour
          //   SkinController.upgradeSkin();
         }
     }
+
+	public void AddAmmo()
+	{
+		ammo++;
+	}
 }

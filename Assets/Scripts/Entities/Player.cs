@@ -39,7 +39,7 @@ public class Player : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("GameMusic");
         rb2d = GetComponent<Rigidbody2D>();
 		Movement = Vector2.zero;
-
+		PlayerManager.Instance.ammo = 50;
 		// GET ANIMATOR COMPONENTS
 		//animator = GetComponent<Animator>();
 		//moveParamID = Animator.StringToHash("Moving");
@@ -111,10 +111,12 @@ public class Player : MonoBehaviour
 	}
 	void Shooting()
 	{
+		if (PlayerManager.Instance.ammo <= 0) return;
 		bulletObject = Instantiate(bullet, firePoint.position, firePoint.rotation);
 		rb2dBullet = bulletObject.GetComponent<Rigidbody2D>();
 		rb2dBullet.AddForce(firePoint.up * bulletSpeed, ForceMode2D.Impulse);
         FindObjectOfType<AudioManager>().Play("Shoot");
         Destroy(bulletObject, range);
+		PlayerManager.Instance.ammo--;
 	}
 }

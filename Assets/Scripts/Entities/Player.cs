@@ -50,6 +50,8 @@ public class Player : MonoBehaviour
 	private void Update()
 	{
 		if (PlayerManager.Instance.health <= 0 && !PlayerManager.Instance.IMMORTAL) playerDie();
+		EnemySpawner.Instance.Spawner();
+		EnemySpawner.Instance.EnemyChecker();
 	}
 
 	private void playerDie()

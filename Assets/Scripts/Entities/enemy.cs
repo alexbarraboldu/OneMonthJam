@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class enemy : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
 	public Transform Objective;
 	public float Speed;
@@ -39,5 +39,14 @@ public class enemy : MonoBehaviour
 		//}
 
 		return position;
+	}
+
+	private void OnTriggerEnter2D(Collider2D collision)
+	{
+		if (collision.gameObject.tag == "Bullet")
+		{
+			Destroy(collision.gameObject);
+			Destroy(gameObject);
+		}
 	}
 }

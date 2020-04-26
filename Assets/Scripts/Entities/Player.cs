@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
 	[Header("Variables for guns:")]
 	[Space(10)]
 	public Transform firePoint;
-	public GameObject bullet;
+	public GameObject[] bullets;
 	public Vector2 bulletSpeed;
 	public float fireRate;
 	public float range;
@@ -52,6 +52,12 @@ public class Player : MonoBehaviour
 		if (PlayerManager.Instance.health <= 0 && !PlayerManager.Instance.IMMORTAL) playerDie();
 		EnemySpawner.Instance.Spawner();
 		EnemySpawner.Instance.EnemyChecker();
+
+		if (Input.GetKeyDown(KeyCode.Space))
+		{
+			if (PlayerManager.Instance.bulletSelected == 1) PlayerManager.Instance.bulletSelected = 0;
+			else PlayerManager.Instance.bulletSelected = 1;
+		}
 	}
 
 	private void playerDie()
@@ -109,7 +115,7 @@ public class Player : MonoBehaviour
 	void Shooting()
 	{
 		if (PlayerManager.Instance.ammo <= 0) return;
-		bulletObject = Instantiate(bullet, firePoint.position, firePoint.rotation);
+		bulletObject = Instantiate(bullets[PlayerManager.Instance.bulletSelected], firePoint.position, firePoint.rotation);
 		rb2dBullet = bulletObject.GetComponent<Rigidbody2D>();
 		rb2dBullet.AddForce(firePoint.up * bulletSpeed, ForceMode2D.Impulse);
         FindObjectOfType<AudioManager>().Play("Shoot");

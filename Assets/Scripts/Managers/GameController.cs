@@ -7,34 +7,21 @@ using System.IO;
 
 public class GameController : MonoBehaviour
 {
-    public int score;
-    public int hiscore;
-    public static GameController Instance { get; private set; }
+    public static GameController instance { get; private set; }
     
+    public int hiscore = 0;
+    public int record;
 
     void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else if (Instance != this)
+        DontDestroyOnLoad(gameObject);
+        if (instance == null)
+            instance = this;
+        else
         {
             Destroy(gameObject);
+            return;
         }
-        
-        DontDestroyOnLoad(gameObject);
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        FindObjectOfType<AudioManager>().Play("MenuMusic");
-        StreamReader reader = new StreamReader("Hiscore.txt");
-        string hiscorestring = reader.ReadLine();
-        hiscore = int.Parse(hiscorestring);
-        reader.Close();
-        BeginGame();
-        
     }
 
     // Update is called once per frame
@@ -44,28 +31,8 @@ public class GameController : MonoBehaviour
             Application.Quit();
     }
 
-    public void BeginGame()
+    void FixedUpdate()
     {
-        score = 0;
-        //scoreController.Instance.textScore.text = "PUNTOS:" + score;
-        //scoreController.Instance.textHiscore.text = "META: " + hiscore;
-        
-    }
-    public void IncrementScore()
-    {
-        score++;
-
-        //scoreController.Instance.textScore.text = "PUNTOS:" + score;
-        if (score > hiscore)
-        {
-            hiscore = Instance.score;
-            //scoreController.Instance.textHiscore.text = "META: " + hiscore;
-
-            // Save the new hiscore
-            StreamWriter writer = new StreamWriter("Hiscore.txt", true);
-            writer.Write(hiscore);
-            writer.Close();
-        }
     }
 }
     

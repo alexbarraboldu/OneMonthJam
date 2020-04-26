@@ -1,0 +1,5 @@
+player1: disparos normales, singleshoot.
+player2: disparos normales, doubleshoot.
+player3: disparos normales pero velocidad *1,5, chorro recto.
+player4: fakeCores, singleshoot firerate *0,2, los fakecores son lentos.
+player5: muchos disparos velocity *2, en cono.

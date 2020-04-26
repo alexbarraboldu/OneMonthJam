@@ -16,19 +16,19 @@ public class Player : MonoBehaviour
 	[Space(5)]
 	public float dmgCounter = 100f;
 	private float initialDmgCounter = 0;
-	private float StaminaTimeRecover;
-	private bool OffSetSprint = false;
 
+	[Header("Variables for guns:")]
+	[Space(10)]
+	public Transform firePoint;
+	public GameObject bullet;
+	public Vector2 bulletSpeed;
+	public float range;
 	//  VARIABLES FOR GUNS
 	private Rigidbody2D rb2dBullet;
 	private GameObject bulletObject;
 	private float initialBulletTime;
 	private float Counter;
 
-	[Header("Variables for guns:")]
-	[Space(10)]
-	public Transform firePoint;
-	public GameObject weaponGraphicsObject;
 
 	//VARIABLES FOR ANIMATIONS
 	//private Animator animator;
@@ -54,7 +54,7 @@ public class Player : MonoBehaviour
 	private void playerDie()
 	{
 		//SoundManager.Instance.PlaySound(SoundManager.Sounds.PlayerDie);
-		//Destroy(gameObject);
+		Destroy(gameObject);
 		//MusicManager.Instance.PlaySong(MusicManager.Songs.GameOver);
 		//PlayerSceneManager.Instance.goLastScene();
 	}
@@ -70,22 +70,7 @@ public class Player : MonoBehaviour
 		//SpawnerManager.Instance.Spawner();
 		//SpawnerManager.Instance.EnemyChecker();
 
-		//if (weaponUsing == null) return;
-		//if (Counter >= ReloadingCounter && reloading == true) reloading = false;
-		//else
-		//{
-		//	if (Counter >= initialBulletTime && Input.GetMouseButton(0))
-		//	{
-		//		if (weaponUsing.Rounds <= 0) return;
-
-		//		if (reloading == true) return;
-
-		//		Shooting();
-
-		//		initialBulletTime = Counter + (weaponUsing.FireRate / PlayerManager.Instance.shootingBoost);
-		//		ReloadingCounter = Counter + weaponUsing.reloadTime;
-		//	}
-		//}
+		if (Input.GetMouseButton(1))/*if (Input.GetKeyDown(KeyCode.Space))*/Shooting();
 	}
 
 	void PlayerMovement()
@@ -112,11 +97,10 @@ public class Player : MonoBehaviour
 	}
 	void Shooting()
 	{
-		//bulletObject = Instantiate(weaponUsing.Bullet, firePoint.position, firePoint.rotation);
-		//bulletObject.GetComponent<Bullet>().PlayerShoot = true;
-		//rb2dBullet = bulletObject.GetComponent<Rigidbody2D>();
-		//rb2dBullet.AddForce(firePoint.up * weaponUsing.BulletSpeed, ForceMode2D.Impulse);
-		////SoundManager.Instance.PlaySound(SoundManager.Sounds.Shooting);
-		//Destroy(bulletObject, weaponUsing.Range);
+		bulletObject = Instantiate(bullet, firePoint.position, firePoint.rotation);
+		rb2dBullet = bulletObject.GetComponent<Rigidbody2D>();
+		rb2dBullet.AddForce(firePoint.up * bulletSpeed, ForceMode2D.Impulse);
+		//SoundManager.Instance.PlaySound(SoundManager.Sounds.Shooting);
+		Destroy(bulletObject, range);
 	}
 }

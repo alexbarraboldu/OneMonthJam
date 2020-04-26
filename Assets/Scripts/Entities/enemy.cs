@@ -15,7 +15,7 @@ public class Enemy : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		float velocity = Speed * Time.deltaTime;
+		float velocity = Speed * Time.deltaTime * 1000;
 		Objective.position = SearchObjective();
 		transform.position = Vector2.MoveTowards(transform.position, Objective.position, velocity);
 	}

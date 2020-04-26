@@ -164,4 +164,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Objective: {fileID: 5383626011315950964, guid: ef1c30ecd089f99409c25fe2d204a913,
     type: 3}
-  Speed: 0.1
+  Speed: 0.01

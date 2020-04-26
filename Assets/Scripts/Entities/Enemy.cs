@@ -48,6 +48,7 @@ public class Enemy : MonoBehaviour
 	{
 		if (collision.gameObject.tag == "Bullet")
 		{
+            GameController.Instance.IncrementScore();
 			Destroy(collision.gameObject);
 			Destroy(gameObject);
 			GameController.Instance.IncrementScore();

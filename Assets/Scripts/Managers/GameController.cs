@@ -7,8 +7,8 @@ using System.IO;
 
 public class GameController : MonoBehaviour
 {
-    public int score;
-    public int hiscore;
+    public int score = 0;
+    public int hiscore = 0;
     public static GameController Instance { get; private set; }
     
 
@@ -31,10 +31,9 @@ public class GameController : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("MenuMusic");
         StreamReader reader = new StreamReader("Hiscore.txt");
         string hiscorestring = reader.ReadLine();
-        hiscore = int.Parse(hiscorestring);
         reader.Close();
+        hiscore = int.Parse(hiscorestring);
         BeginGame();
-        
     }
 
     // Update is called once per frame
@@ -49,7 +48,6 @@ public class GameController : MonoBehaviour
         score = 0;
         //scoreController.Instance.textScore.text = "PUNTOS:" + score;
         //scoreController.Instance.textHiscore.text = "META: " + hiscore;
-        
     }
     public void IncrementScore()
     {
@@ -62,7 +60,7 @@ public class GameController : MonoBehaviour
             //scoreController.Instance.textHiscore.text = "META: " + hiscore;
 
             // Save the new hiscore
-            StreamWriter writer = new StreamWriter("Hiscore.txt", true);
+            StreamWriter writer = new StreamWriter("Hiscore.txt", false);
             writer.Write(hiscore);
             writer.Close();
         }

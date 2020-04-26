@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
 	[Header("Variables for guns:")]
 	[Space(10)]
 	public Transform firePoint;
-	public GameObject bullet;
+	public GameObject[] bullets;
 	public Vector2 bulletSpeed;
 	public float fireRate;
 	public float range;
@@ -39,7 +39,7 @@ public class Player : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("GameMusic");
         rb2d = GetComponent<Rigidbody2D>();
 		Movement = Vector2.zero;
-
+		PlayerManager.Instance.ammo = 50;
 		// GET ANIMATOR COMPONENTS
 		//animator = GetComponent<Animator>();
 		//moveParamID = Animator.StringToHash("Moving");
@@ -52,16 +52,22 @@ public class Player : MonoBehaviour
 		if (PlayerManager.Instance.health <= 0 && !PlayerManager.Instance.IMMORTAL) playerDie();
 		EnemySpawner.Instance.Spawner();
 		EnemySpawner.Instance.EnemyChecker();
+
+		if (Input.GetKeyDown(KeyCode.Space))
+		{
+			if (PlayerManager.Instance.bulletSelected == 1) PlayerManager.Instance.bulletSelected = 0;
+			else PlayerManager.Instance.bulletSelected = 1;
+		}
 	}
 
 	private void playerDie()
 	{
         //SoundManager.Instance.PlaySound(SoundManager.Sounds.PlayerDie);
         Destroy(gameObject);
-        FindObjectOfType<AudioManager>().Play("GameOver");
+		FindObjectOfType<AudioManager>().Stop("GameMusic");
+		FindObjectOfType<AudioManager>().Play("GameOver");
         //MusicManager.Instance.PlaySong(MusicManager.Songs.GameOver);
         //PlayerSceneManager.Instance.goLastScene();
-        FindObjectOfType<AudioManager>().Stop("GameMusic");
 
     }
 
@@ -72,9 +78,6 @@ public class Player : MonoBehaviour
 		PlayerMovement();
 		PlayerManager.Instance.SetPlayerPosition(transform.position);
 		PlayerAim();
-
-		//SpawnerManager.Instance.Spawner();
-		//SpawnerManager.Instance.EnemyChecker();
 
 		if (Counter >= initialBulletTime && Input.GetMouseButton(1))
 		{
@@ -111,10 +114,12 @@ public class Player : MonoBehaviour
 	}
 	void Shooting()
 	{
-		bulletObject = Instantiate(bullet, firePoint.position, firePoint.rotation);
+		if (PlayerManager.Instance.ammo <= 0) return;
+		bulletObject = Instantiate(bullets[PlayerManager.Instance.bulletSelected], firePoint.position, firePoint.rotation);
 		rb2dBullet = bulletObject.GetComponent<Rigidbody2D>();
 		rb2dBullet.AddForce(firePoint.up * bulletSpeed, ForceMode2D.Impulse);
         FindObjectOfType<AudioManager>().Play("Shoot");
         Destroy(bulletObject, range);
+		PlayerManager.Instance.ammo--;
 	}
 }

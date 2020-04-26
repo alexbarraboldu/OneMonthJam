@@ -46,11 +46,10 @@ MonoBehaviour:
   STOP: 0
   MapTopLeftLimit: {x: 0, y: 0}
   MapBotRightLimit: {x: 0, y: 0}
-  CameraTopLeftLimit: {x: 0, y: 0}
-  CameraBotRightLimit: {x: 0, y: 0}
+  InnerMapTopLeftLimit: {x: 0, y: 0}
+  InnerMapBotRightLimit: {x: 0, y: 0}
   NetPosition: {x: 0, y: 0}
-  AuxEnemy: {fileID: 4053090782876680169, guid: 00d797bda4d41434a85a42594eebbc60,
-    type: 3}
+  AuxEnemy: {fileID: 114582906081696138, guid: 00d797bda4d41434a85a42594eebbc60, type: 3}
   ActualRound: 0
   RoundSpawnComplete: 0
   TotalEnemies: 0

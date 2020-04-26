@@ -15,6 +15,8 @@ public class PlayerManager : MonoBehaviour
 	[Header("Variables for player:")]
 	public float health;
 	public float speed;
+	public int ammo;
+	public int bulletSelected;
 	public Vector2 PlayerPosition;
     public int streak;
     public int lvl;
@@ -41,6 +43,7 @@ public class PlayerManager : MonoBehaviour
 		{
 			Debug.Log("Error: Duplicated " + this + "in the scene");
 		}
+		bulletSelected = 0;
 	}
 
 	//private void Update()
@@ -113,4 +116,9 @@ public class PlayerManager : MonoBehaviour
                 break;
         }
     }
+
+	public void AddAmmo()
+	{
+		ammo++;
+	}
 }

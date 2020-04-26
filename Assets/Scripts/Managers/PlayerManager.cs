@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class PlayerManager : MonoBehaviour
 {
 	public static PlayerManager Instance { get; private set; }
-    //
+    
 	// RESET TIMER
 	public bool IMMORTAL;
 
@@ -16,9 +16,12 @@ public class PlayerManager : MonoBehaviour
 	public float health;
 	public float speed;
 	public Vector2 PlayerPosition;
+    public int streak;
 
-	void Start()
+
+    void Start()
 	{
+        streak = 0;
 		if (Instance == null)
 		{
 			Instance = this;
@@ -56,4 +59,14 @@ public class PlayerManager : MonoBehaviour
 		health = 100;
 		speed = 1.25f;
 	}
+    public void increaseStreake()
+    {
+        if (streak < 5)
+        {
+            streak += 1;
+        }
+        else{
+            SkinController.upgradeSkin();
+        }
+    }
 }

@@ -15,6 +15,7 @@ public class PlayerManager : MonoBehaviour
 	[Header("Variables for player:")]
 	public float health;
 	public float speed;
+    public int dmg;
 	public int ammo;
 	public int bulletSelected;
 	public Vector2 PlayerPosition;
@@ -31,9 +32,6 @@ public class PlayerManager : MonoBehaviour
 
     void Start()
 	{
-        needed = 5;
-        streak = 0;
-        lvl = 0;
 		if (Instance == null)
 		{
 			Instance = this;
@@ -44,7 +42,11 @@ public class PlayerManager : MonoBehaviour
 			Debug.Log("Error: Duplicated " + this + "in the scene");
 		}
 		bulletSelected = 0;
-	}
+        needed = 5;
+        streak = 0;
+        lvl = 0;
+        dmg = 1;
+    }
 
 	//private void Update()
 	//{
@@ -84,7 +86,7 @@ public class PlayerManager : MonoBehaviour
                 UpgradeSkin();
             }
             else{
-                //el level ya es el maximo;
+                Debug.Log("MAX LVL");
             }
         }
     }
@@ -95,22 +97,27 @@ public class PlayerManager : MonoBehaviour
             case 1:
                 FindObjectOfType<SkinController>().GetComponent<SpriteRenderer>().sprite = lvl1;
                 needed = 5;
+                dmg++;
                 break;
             case 2:
                 FindObjectOfType<SkinController>().GetComponent<SpriteRenderer>().sprite = lvl2;
                 needed = 7;
+                dmg++;
                 break;
             case 3:
                 FindObjectOfType<SkinController>().GetComponent<SpriteRenderer>().sprite = lvl3;
                 needed = 9;
+                dmg++;
                 break;
             case 4:
                 FindObjectOfType<SkinController>().GetComponent<SpriteRenderer>().sprite = lvl4;
                 needed = 11;
+                dmg++;
                 break;
             case 5:
                 FindObjectOfType<SkinController>().GetComponent<SpriteRenderer>().sprite = lvl5;
                 needed = 13;
+                dmg++;
                 break;
             default:
                 break;
@@ -119,6 +126,6 @@ public class PlayerManager : MonoBehaviour
 
 	public void AddAmmo()
 	{
-		ammo++;
+		ammo +=2;
 	}
 }

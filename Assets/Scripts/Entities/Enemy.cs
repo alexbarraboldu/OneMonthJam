@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
 	public Transform Objective;
+	public int life;
 	public float Speed;
 
 	private void Start()
@@ -15,12 +16,21 @@ public class Enemy : MonoBehaviour
 		{
 			Physics2D.IgnoreCollision(PlayerBounties[i].GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>(), true);
 		}
+		life = 5;
 	}
 
 	void Update()
 	{
 		Objective.position = SearchObjective();
 		transform.position = Vector2.MoveTowards(transform.position, Objective.position, Speed * Time.deltaTime * 1000.0f);
+
+		if (life <= 0)
+		{
+			Destroy(gameObject);
+			GameController.Instance.IncrementScore();
+			PlayerManager.Instance.AddAmmo();
+			PlayerManager.Instance.increaseStreak();
+		}
 	}
 
 	Vector2 SearchObjective()
@@ -48,12 +58,12 @@ public class Enemy : MonoBehaviour
 	{
 		if (collision.gameObject.tag == "Bullet")
 		{
-            GameController.Instance.IncrementScore();
 			Destroy(collision.gameObject);
-			Destroy(gameObject);
-			GameController.Instance.IncrementScore();
-			PlayerManager.Instance.AddAmmo();
-            PlayerManager.Instance.increaseStreak();
+			life -= PlayerManager.Instance.dmg;
+		}
+		if (collision.gameObject.tag == "BulletCore")
+		{
+			Destroy(collision.gameObject);
 		}
 	}
 }

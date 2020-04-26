@@ -66,7 +66,7 @@ public class PlayerManager : MonoBehaviour
             streak += 1;
         }
         else{
-            SkinController.upgradeSkin();
+         //   SkinController.upgradeSkin();
         }
     }
 }

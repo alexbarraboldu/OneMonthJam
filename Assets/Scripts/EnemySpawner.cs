@@ -12,9 +12,9 @@ public class EnemySpawner : MonoBehaviour
 	public Vector2 MapTopLeftLimit;
 	public Vector2 MapBotRightLimit;
 
-	[Header("Camera Bounties:")]
-	public Vector2 CameraTopLeftLimit;
-	public Vector2 CameraBotRightLimit;
+	[Header("Inner Map Bounties:")]
+	public Vector2 InnerMapTopLeftLimit;
+	public Vector2 InnerMapBotRightLimit;
 
 	[Header("Final Spawn Position:")]
 	public Vector2 NetPosition;
@@ -50,42 +50,15 @@ public class EnemySpawner : MonoBehaviour
 
 	private void Update()
 	{
-		//if (!PlayerSceneManager.Instance.ZoneIsHostile) reset();
 		MapTopLeftLimit = new Vector2(GameObject.Find("West_Wall").transform.position.x, GameObject.Find("North_Wall").transform.position.y);
 		MapBotRightLimit = new Vector2(GameObject.Find("East_Wall").transform.position.x, GameObject.Find("South_Wall").transform.position.y);
 
-
-		CameraTopLeftLimit = new Vector2(Camera.main.transform.position.x - Camera.main.aspect * Camera.main.orthographicSize, Camera.main.transform.position.y + Camera.main.orthographicSize);
-		CameraBotRightLimit = new Vector2(Camera.main.transform.position.x + Camera.main.aspect * Camera.main.orthographicSize, Camera.main.transform.position.y - Camera.main.orthographicSize);
+		InnerMapTopLeftLimit = new Vector2(GameObject.Find("West").transform.position.x, GameObject.Find("North").transform.position.y);
+		InnerMapBotRightLimit = new Vector2(GameObject.Find("East").transform.position.x, GameObject.Find("South").transform.position.y);
 	}
 	private Vector2 GenerateRawPosition()
 	{
-		//if (PlayerManager.Instance.PlayerPosition.x > 0) //Right
-		//{
-		//	if (PlayerManager.Instance.PlayerPosition.y > 0) //Up
-		//	{
-		//		return new Vector2(Random.Range(0, MapBotRightLimit.x), Random.Range(0, MapTopLeftLimit.y));
-		//	}
-		//	else //Down
-		//	{
-		//		return new Vector2(Random.Range(0, MapBotRightLimit.x), Random.Range(MapBotRightLimit.y, 0));
-		//	}
-		//}
-		//else if (PlayerManager.Instance.PlayerPosition.x < 0) //Left
-		//{
-		//	if (PlayerManager.Instance.PlayerPosition.y > 0) //Up
-		//	{
-		//		return new Vector2(Random.Range(MapTopLeftLimit.x, 0), Random.Range(0, MapTopLeftLimit.y));
-		//	}
-		//	else //Down
-		//	{
-		//		return new Vector2(Random.Range(MapTopLeftLimit.x, 0), Random.Range(MapBotRightLimit.y, 0));
-		//	}
-		//}
-		//else //All
-		//{
 			return new Vector2(Random.Range(MapTopLeftLimit.x, MapBotRightLimit.x), Random.Range(MapBotRightLimit.y, MapTopLeftLimit.y));
-		//}
 	}
 
 	public Vector2 CheckRawPosition()
@@ -94,25 +67,19 @@ public class EnemySpawner : MonoBehaviour
 
 		if (STOP) return RawPosition;
 
-		if ((RawPosition.x >= CameraTopLeftLimit.x && RawPosition.x <= CameraBotRightLimit.x) && (RawPosition.y >= CameraBotRightLimit.y && RawPosition.y <= CameraTopLeftLimit.y))
+		if ((RawPosition.x >= InnerMapTopLeftLimit.x && RawPosition.x <= InnerMapBotRightLimit.x) && (RawPosition.y >= InnerMapBotRightLimit.y && RawPosition.y <= InnerMapTopLeftLimit.y))
 		{
 			RawPosition = CheckRawPosition();
 		}
 
 		NetPosition = RawPosition;
 
-		//  Enemy Randomize
-		//int EnemyToSpawn = Random.Range(0, 2);
-		//if (EnemyToSpawn == 0) Instantiate(AuxEnemy, NetPosition, Quaternion.identity);
-		//else Instantiate(AuxEnemyShooter, NetPosition, Quaternion.identity);
-
-		//Debug.Log(NetPosition);
 		return NetPosition;
 	}
 
 	public void Spawner()
 	{
-		if (RoundSpawnComplete /*|| !PlayerSceneManager.Instance.ZoneIsHostile*/) return;
+		if (RoundSpawnComplete) return;
 
 		if (FirstTime)
 		{
@@ -126,13 +93,11 @@ public class EnemySpawner : MonoBehaviour
 		}
 
 		// Enemy Spawn
-		//int EnemiesToSpawn = HostileZoneWaves.EnemyTypePerRound[ActualRound].x;
-		for (int m = 0; m < 10; m++)
+		for (int m = 0; m < 10 + waveCounter; m++)
 		{
 			NetPosition = CheckRawPosition();
 			Instantiate(AuxEnemy, NetPosition, Quaternion.identity);
 		}
-		//EnemiesToSpawn = HostileZoneWaves.EnemyTypePerRound[ActualRound].y;
 
 		RoundSpawnComplete = true;
 	}
@@ -140,11 +105,10 @@ public class EnemySpawner : MonoBehaviour
 	public void EnemyChecker()
 	{
 		int MeleeEnemies = GameObject.FindObjectsOfType<Enemy>().Length;
-		//int RangedEnemies = GameObject.FindObjectsOfType<EnemyShooter>().Length;
 
 		TotalEnemies = MeleeEnemies;
 
-		if ((MeleeEnemies == 0) /*&& PlayerSceneManager.Instance.ZoneIsHostile */ && !FirstTime)
+		if ((MeleeEnemies == 0) && !FirstTime)
 		{
 			if (Counter >= 200f)
 			{

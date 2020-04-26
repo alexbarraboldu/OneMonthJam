@@ -6,18 +6,21 @@ public class Enemy : MonoBehaviour
 {
 	public Transform Objective;
 	public float Speed;
-	// Start is called before the first frame update
-	void Start()
+
+	private void Start()
 	{
-		
+		GameObject[] PlayerBounties = GameObject.FindGameObjectsWithTag("Wall");
+
+		for (int i = 0; i < PlayerBounties.Length; i++)
+		{
+			Physics2D.IgnoreCollision(PlayerBounties[i].GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>(), true);
+		}
 	}
 
-	// Update is called once per frame
 	void Update()
 	{
-		float velocity = Speed * Time.deltaTime * 1000;
 		Objective.position = SearchObjective();
-		transform.position = Vector2.MoveTowards(transform.position, Objective.position, velocity);
+		transform.position = Vector2.MoveTowards(transform.position, Objective.position, Speed * Time.deltaTime * 1000.0f);
 	}
 
 	Vector2 SearchObjective()

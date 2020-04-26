@@ -16,8 +16,7 @@ public class PlayerManager : MonoBehaviour
     public float health;
     public float speed;
     public Vector2 PlayerPosition;
-
-    void Start()
+    private void Awake()
     {
         if (Instance == null)
         {
@@ -28,6 +27,11 @@ public class PlayerManager : MonoBehaviour
         {
             Debug.Log("Error: Duplicated " + this + "in the scene");
         }
+    }
+
+    void Start()
+    {
+       
     }
 
     //private void Update()

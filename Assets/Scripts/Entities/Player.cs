@@ -37,7 +37,8 @@ public class Player : MonoBehaviour
 
 	void Start()
 	{
-		rb2d = GetComponent<Rigidbody2D>();
+        FindObjectOfType<AudioManager>().Play("GameMusic");
+        rb2d = GetComponent<Rigidbody2D>();
 		Movement = Vector2.zero;
 
 		// GET ANIMATOR COMPONENTS
@@ -54,13 +55,16 @@ public class Player : MonoBehaviour
 
 	private void playerDie()
 	{
-		//SoundManager.Instance.PlaySound(SoundManager.Sounds.PlayerDie);
-		Destroy(gameObject);
-		//MusicManager.Instance.PlaySong(MusicManager.Songs.GameOver);
-		//PlayerSceneManager.Instance.goLastScene();
-	}
+        //SoundManager.Instance.PlaySound(SoundManager.Sounds.PlayerDie);
+        Destroy(gameObject);
+        FindObjectOfType<AudioManager>().Play("GameOver");
+        //MusicManager.Instance.PlaySong(MusicManager.Songs.GameOver);
+        //PlayerSceneManager.Instance.goLastScene();
+        FindObjectOfType<AudioManager>().Stop("GameMusic");
 
-	private void FixedUpdate()
+    }
+
+    private void FixedUpdate()
 	{
 		fixedDelta = Time.fixedDeltaTime * 1000.0f;
 		Counter = Time.time * fixedDelta;
@@ -86,12 +90,16 @@ public class Player : MonoBehaviour
 		if (rb2d.velocity.x > PlayerManager.Instance.speed || rb2d.velocity.x < PlayerManager.Instance.speed)
 		{
 			rb2d.velocity = Vector2.zero;
-			//animator.SetBool("Moving", false);
-		}
-		rb2d.AddForce(Movement * PlayerManager.Instance.speed * fixedDelta, ForceMode2D.Impulse);
-		//animator.SetBool("Moving", true);
-	}
-	void PlayerAim()
+            FindObjectOfType<AudioManager>().Stop("Propulsion");
+            //animator.SetBool("Moving", false);
+        }
+
+        rb2d.AddForce(Movement * PlayerManager.Instance.speed * fixedDelta, ForceMode2D.Impulse);
+        //animator.SetBool("Moving", true);
+        FindObjectOfType<AudioManager>().Play("Propulsion");
+
+    }
+    void PlayerAim()
 	{
 		mousePosition = Input.mousePosition;
 		mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
@@ -105,7 +113,7 @@ public class Player : MonoBehaviour
 		bulletObject = Instantiate(bullet, firePoint.position, firePoint.rotation);
 		rb2dBullet = bulletObject.GetComponent<Rigidbody2D>();
 		rb2dBullet.AddForce(firePoint.up * bulletSpeed, ForceMode2D.Impulse);
-		//SoundManager.Instance.PlaySound(SoundManager.Sounds.Shooting);
-		Destroy(bulletObject, range);
+        FindObjectOfType<AudioManager>().Play("Shoot");
+        Destroy(bulletObject, range);
 	}
 }

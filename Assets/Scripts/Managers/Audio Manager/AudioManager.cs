@@ -5,7 +5,7 @@ using System;
 public class AudioManager : MonoBehaviour
 {
     public Sound[] sounds;
-    public static AudioManager instance;
+    public static AudioManager instance { get; private set; }
     void Awake()
     {
         DontDestroyOnLoad(gameObject);

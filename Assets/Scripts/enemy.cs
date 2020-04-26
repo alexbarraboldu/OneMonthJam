@@ -23,7 +23,7 @@ public class enemy : MonoBehaviour
     Vector2 SearchObjective()
     {
         float lowestDistance = 99999;
-        Vector2 position;
+        Vector2 position = new Vector2(0,0); 
         for (int i = 0; i < Manager.Instance.Core.Length; i++)
         {
             if (Vector3.Distance(transform.position, Manager.Instance.Core[i].transform.position) < lowestDistance)

@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class PlayerManager : MonoBehaviour
 {
 	public static PlayerManager Instance { get; private set; }
-
+    //
 	// RESET TIMER
 	public bool IMMORTAL;
 

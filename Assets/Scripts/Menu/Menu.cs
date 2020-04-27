@@ -1,17 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
     public void Play ()
     {
-        SceneManager.LoadScene("LVL1");
+        ScenesManager.Instance.ChangeScene("Menu");
     }
 
     public void Exit ()
     {
-        Application.Quit();
+        ScenesManager.Instance.ExitGame();
     }
 }

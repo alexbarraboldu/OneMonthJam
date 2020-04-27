@@ -23,22 +23,20 @@ public class ScenesManager : MonoBehaviour
     public void ChangeScene (string scName) {
         switch (scName)
         {
-            case "MainMenu":
+            case "Menu":
                 AudioManager.Instance.StopAll();
                 AudioManager.Instance.Play("MenuMusic");
                 break;
-<<<<<<< HEAD
             case "LVL1":
-                AudioManager.instance.StopAll();
-                AudioManager.instance.Play("GameMusic");
-                break;
-=======
-            case "Game":
                 AudioManager.Instance.StopAll();
                 AudioManager.Instance.Play("GameMusic");
-				PlayerManager.Instance.reset();
-				break;
->>>>>>> 3dfcefd20f787a9671dce94d4d55395c25f8937a
+                PlayerManager.Instance.reset();
+                break;
+    //        case "Game":
+    //            AudioManager.Instance.StopAll();
+    //            AudioManager.Instance.Play("GameMusic");
+				//PlayerManager.Instance.reset();
+				//break;
             default:
                 break;
         }

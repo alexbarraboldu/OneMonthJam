@@ -19,11 +19,11 @@ public class Defeat : MonoBehaviour
 
     public void PlayAgain ()
     {
-        SceneManager.LoadScene("LVL1");
+        ScenesManager.Instance.ChangeScene("LVL1");
     }
 
     public void BackToMenu ()
     {
-        SceneManager.LoadScene("Menu");
+        ScenesManager.Instance.ChangeScene("Menu");
     }
 }

@@ -150,6 +150,6 @@ public class PlayerManager : MonoBehaviour
 
     public void DefeatScene ()
     {
-        SceneManager.LoadScene("DefeatScene");
+        ScenesManager.Instance.ChangeScene("DefeatScene");
     }
 }

@@ -69,11 +69,12 @@ public class Player : MonoBehaviour
 	private void playerDie()
 	{
         //SoundManager.Instance.PlaySound(SoundManager.Sounds.PlayerDie);
+        
         Destroy(gameObject);
 		FindObjectOfType<AudioManager>().Stop("GameMusic");
 		FindObjectOfType<AudioManager>().Play("GameOver");
         //MusicManager.Instance.PlaySong(MusicManager.Songs.GameOver);
-        //PlayerSceneManager.Instance.goLastScene();
+        PlayerManager.Instance.DefeatScene();
 
     }
 

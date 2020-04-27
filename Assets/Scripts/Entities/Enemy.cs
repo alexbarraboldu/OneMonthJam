@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
 	public Transform Objective;
 	public int life;
 	public float Speed;
+	public bool arrived;
 
 	private void Start()
 	{
@@ -16,13 +17,15 @@ public class Enemy : MonoBehaviour
 		{
 			Physics2D.IgnoreCollision(PlayerBounties[i].GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>(), true);
 		}
-		life = 5;
+		life = PlayerManager.Instance.enemyLife;
+		arrived = false;
 	}
 
 	void Update()
 	{
 		Objective.position = SearchObjective();
-		transform.position = Vector2.MoveTowards(transform.position, Objective.position, Speed * Time.deltaTime * 1000.0f);
+
+		if (!arrived) transform.position = Vector2.MoveTowards(transform.position, Objective.position, Speed * Time.deltaTime * 1000.0f);
 
 		if (life <= 0)
 		{
@@ -64,6 +67,10 @@ public class Enemy : MonoBehaviour
 		if (collision.gameObject.tag == "BulletCore")
 		{
 			Destroy(collision.gameObject);
+		}
+		if (collision.gameObject.tag == "Core")
+		{
+			arrived = true;
 		}
 	}
 }

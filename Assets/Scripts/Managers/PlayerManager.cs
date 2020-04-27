@@ -23,6 +23,8 @@ public class PlayerManager : MonoBehaviour
     public int lvl;
     public int needed;
 
+
+    public int enemyLife;
     //SKINS
     public Sprite lvl1;
     public Sprite lvl2;
@@ -46,6 +48,7 @@ public class PlayerManager : MonoBehaviour
         streak = 0;
         lvl = 0;
         dmg = 1;
+        enemyLife = 1;
     }
 
 	//private void Update()
@@ -98,26 +101,31 @@ public class PlayerManager : MonoBehaviour
                 FindObjectOfType<SkinController>().GetComponent<SpriteRenderer>().sprite = lvl1;
                 needed = 5;
                 dmg++;
+                enemyLife = 2;
                 break;
             case 2:
                 FindObjectOfType<SkinController>().GetComponent<SpriteRenderer>().sprite = lvl2;
                 needed = 7;
                 dmg++;
+                enemyLife = 3;
                 break;
             case 3:
                 FindObjectOfType<SkinController>().GetComponent<SpriteRenderer>().sprite = lvl3;
                 needed = 9;
                 dmg++;
+                enemyLife = 4;
                 break;
             case 4:
                 FindObjectOfType<SkinController>().GetComponent<SpriteRenderer>().sprite = lvl4;
                 needed = 11;
                 dmg++;
+                enemyLife = 5;
                 break;
             case 5:
                 FindObjectOfType<SkinController>().GetComponent<SpriteRenderer>().sprite = lvl5;
                 needed = 13;
                 dmg++;
+                enemyLife = 7;
                 break;
             default:
                 break;
@@ -126,6 +134,6 @@ public class PlayerManager : MonoBehaviour
 
 	public void AddAmmo()
 	{
-		ammo +=2;
+		ammo +=2 + (EnemySpawner.Instance.ActualRound / 2);
 	}
 }

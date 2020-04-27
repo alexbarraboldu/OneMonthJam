@@ -5,14 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class ScenesManager : MonoBehaviour
 {
+    public static ScenesManager Instance { get; private set; }
+
     public void ChangeScene (string scName) {
         switch (scName)
         {
-            case "MainMenu":
+            case "Menu":
                 FindObjectOfType<AudioManager>().Stop("GameMusic");
                 FindObjectOfType<AudioManager>().Play("MenuMusic");
                 break;
-            case "Game":
+            case "LVL1":
                 FindObjectOfType<AudioManager>().Stop("MenuMusic");
                 FindObjectOfType<AudioManager>().Play("GameMusic");
                 break;

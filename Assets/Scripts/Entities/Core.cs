@@ -4,8 +4,18 @@ using UnityEngine;
 
 public class Core : MonoBehaviour
 {
-    //void Start()
-    //{
-    //    Physics2D.IgnoreCollision(GameObject.FindGameObjectWithTag("Bullet").GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>(), true);
-    //}
+    public int life;
+
+    private void Update()
+    {
+        if (life <= 0) Destroy(gameObject);
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            life -= PlayerManager.Instance.enemyDmg;
+        }
+    }
 }

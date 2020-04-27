@@ -25,7 +25,7 @@ public class Enemy : MonoBehaviour
 	{
 		Objective.position = SearchObjective();
 
-		if (!arrived) transform.position = Vector2.MoveTowards(transform.position, Objective.position, Speed * Time.deltaTime * 1000.0f);
+	/*	if (!arrived)*/ transform.position = Vector2.MoveTowards(transform.position, Objective.position, Speed * Time.deltaTime * 1000.0f);
 
 		if (life <= 0)
 		{
@@ -59,20 +59,15 @@ public class Enemy : MonoBehaviour
 
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
-		if (collision.gameObject.tag == "Core")
-		{
-			arrived = true;
-		}
-		//if (collision.gameObject.tag == "Enemy")
+		//if (collision.gameObject.tag == "Core")
 		//{
-		//	transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+		//	arrived = true;
 		//}
 		if (collision.gameObject.tag == "Player")
 		{
-			PlayerManager.Instance.health -= 1;
+			PlayerManager.Instance.health -= PlayerManager.Instance.enemyDmg;
 		}
 	}
-
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
 		if (collision.gameObject.tag == "Bullet")

@@ -25,6 +25,7 @@ public class PlayerManager : MonoBehaviour
 
 
     public int enemyLife;
+    public int enemyDmg;
     //SKINS
     public Sprite lvl1;
     public Sprite lvl2;
@@ -49,6 +50,7 @@ public class PlayerManager : MonoBehaviour
         lvl = 0;
         dmg = 1;
         enemyLife = 1;
+        enemyDmg = 1;
     }
 
 	//private void Update()

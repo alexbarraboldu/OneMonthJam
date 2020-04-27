@@ -4,24 +4,8 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    //public bool lmao;
-    //void Start()
-    //{
-    //    Destroy(gameObject, 1.0f);
-
-    //}
-
-    //void OnTriggerEnter2D(Collider2D c)
-    //{
-    //    if (c.gameObject.tag.Equals("Enemy"))
-    //    {
-    //        Destroy(c.gameObject);
-    //        GameController.Instance.IncrementScore();
-
-    //    }
-    //    if (c.gameObject.tag.Equals("edges"))
-    //    {
-    //        Destroy(gameObject);
-    //    }
-    //}
+    void Start()
+    {
+        Physics2D.IgnoreCollision(GameObject.FindGameObjectWithTag("Core").GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>(), true);
+    }
 }

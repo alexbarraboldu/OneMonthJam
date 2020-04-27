@@ -59,6 +59,22 @@ public class Enemy : MonoBehaviour
 
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
+		if (collision.gameObject.tag == "Core")
+		{
+			arrived = true;
+		}
+		//if (collision.gameObject.tag == "Enemy")
+		//{
+		//	transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+		//}
+		if (collision.gameObject.tag == "Player")
+		{
+			PlayerManager.Instance.health -= 1;
+		}
+	}
+
+	private void OnTriggerEnter2D(Collider2D collision)
+	{
 		if (collision.gameObject.tag == "Bullet")
 		{
 			Destroy(collision.gameObject);
@@ -67,10 +83,6 @@ public class Enemy : MonoBehaviour
 		if (collision.gameObject.tag == "BulletCore")
 		{
 			Destroy(collision.gameObject);
-		}
-		if (collision.gameObject.tag == "Core")
-		{
-			arrived = true;
 		}
 	}
 }

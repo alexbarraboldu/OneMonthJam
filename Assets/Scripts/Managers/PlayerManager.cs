@@ -101,31 +101,36 @@ public class PlayerManager : MonoBehaviour
                 FindObjectOfType<SkinController>().GetComponent<SpriteRenderer>().sprite = lvl1;
                 needed = 5;
                 dmg++;
+                health++;
                 enemyLife = 2;
                 break;
             case 2:
                 FindObjectOfType<SkinController>().GetComponent<SpriteRenderer>().sprite = lvl2;
                 needed = 7;
                 dmg++;
-                enemyLife = 3;
+                health++;
+                enemyLife = 6;
                 break;
             case 3:
                 FindObjectOfType<SkinController>().GetComponent<SpriteRenderer>().sprite = lvl3;
                 needed = 9;
                 dmg++;
-                enemyLife = 4;
+                health++;
+                enemyLife = 8;
                 break;
             case 4:
                 FindObjectOfType<SkinController>().GetComponent<SpriteRenderer>().sprite = lvl4;
                 needed = 11;
                 dmg++;
-                enemyLife = 5;
+                health++;
+                enemyLife = 10;
                 break;
             case 5:
                 FindObjectOfType<SkinController>().GetComponent<SpriteRenderer>().sprite = lvl5;
                 needed = 13;
                 dmg++;
-                enemyLife = 7;
+                health++;
+                enemyLife = 12;
                 break;
             default:
                 break;

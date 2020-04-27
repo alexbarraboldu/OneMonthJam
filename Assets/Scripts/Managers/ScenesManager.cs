@@ -17,7 +17,8 @@ public class ScenesManager : MonoBehaviour
             case "Game":
                 AudioManager.instance.StopAll();
                 AudioManager.instance.Play("GameMusic");
-                break;
+				PlayerManager.Instance.reset();
+				break;
             default:
                 break;
         }

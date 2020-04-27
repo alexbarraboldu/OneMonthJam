@@ -29,7 +29,7 @@ public class AudioManager : MonoBehaviour
     }
     private void Start()
     {
-        FindObjectOfType<AudioManager>().Play("MenuMusic");
+        this.Play("MenuMusic");
     }
 
     public void Play (string name)
@@ -81,7 +81,5 @@ public class AudioManager : MonoBehaviour
             s.source.Stop();
             s.source.volume = 0;
         }
-       
-        
     }
 }

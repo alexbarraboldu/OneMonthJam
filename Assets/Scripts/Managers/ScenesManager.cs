@@ -7,6 +7,19 @@ public class ScenesManager : MonoBehaviour
 {
     public static ScenesManager Instance { get; private set; }
 
+    void Start()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(this);
+        }
+        else
+        {
+            Debug.Log("Error: Duplicated " + this + "in the scene");
+        }
+    }
+
     public void ChangeScene (string scName) {
         switch (scName)
         {
@@ -14,7 +27,7 @@ public class ScenesManager : MonoBehaviour
                 AudioManager.instance.StopAll();
                 AudioManager.instance.Play("MenuMusic");
                 break;
-            case "Game":
+            case "LVL1":
                 AudioManager.instance.StopAll();
                 AudioManager.instance.Play("GameMusic");
                 break;

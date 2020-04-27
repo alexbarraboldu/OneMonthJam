@@ -6,9 +6,8 @@ public class Menu : MonoBehaviour
 {
     public void Play ()
     {
-        SceneManager.LoadScene("LVL1");
-        AudioManager.instance.StopMusic();
-        SceneManager.Instance.ChangeScene("Game");
+        AudioManager.instance.StopAll();
+        ScenesManager.Instance.ChangeScene("LVL1");
     }
 
     public void Exit ()

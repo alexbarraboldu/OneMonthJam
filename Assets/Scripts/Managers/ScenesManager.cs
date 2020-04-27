@@ -11,12 +11,12 @@ public class ScenesManager : MonoBehaviour
         switch (scName)
         {
             case "MainMenu":
-                AudioManager.instance.StopAll();
-                AudioManager.instance.Play("MenuMusic");
+                AudioManager.Instance.StopAll();
+                AudioManager.Instance.Play("MenuMusic");
                 break;
             case "Game":
-                AudioManager.instance.StopAll();
-                AudioManager.instance.Play("GameMusic");
+                AudioManager.Instance.StopAll();
+                AudioManager.Instance.Play("GameMusic");
 				PlayerManager.Instance.reset();
 				break;
             default:

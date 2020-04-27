@@ -50,6 +50,7 @@ public class EnemySpawner : MonoBehaviour
 
 	private void Update()
 	{
+		if (GameController.Instance.GetIndexScene() == "DefeatScene") return;
 		MapTopLeftLimit = new Vector2(GameObject.Find("West_Wall").transform.position.x, GameObject.Find("North_Wall").transform.position.y);
 		MapBotRightLimit = new Vector2(GameObject.Find("East_Wall").transform.position.x, GameObject.Find("South_Wall").transform.position.y);
 

@@ -68,11 +68,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1697105049
+  m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: be4c8cf9f31a2fc439495f5397aea84d, type: 3}
-  m_Color: {r: 0.29383236, g: 0.8773585, b: 0.76280147, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 7235fe66f33802a40bec8e518746e50a, type: 3}
+  m_Color: {r: 0.9433962, g: 0.56514776, b: 0.86394525, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -131,4 +131,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a431907cee1aae14f9e0c59ff18542c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 5000
+  life: 1000
+  lifeslider: {fileID: 0}

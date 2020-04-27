@@ -42,7 +42,9 @@ public class Player : MonoBehaviour
 
 	void Start()
 	{
-        FindObjectOfType<AudioManager>().Play("GameMusic");
+		Cursor.visible = false;
+
+		FindObjectOfType<AudioManager>().Play("GameMusic");
         rb2d = GetComponent<Rigidbody2D>();
 		Movement = Vector2.zero;
 		PlayerManager.Instance.ammo = 50;

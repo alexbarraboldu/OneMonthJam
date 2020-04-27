@@ -73,7 +73,8 @@ public class Player : MonoBehaviour
 				Destroy(bulletObject.gameObject);
 			}
 		}
-	}
+        PlayerAim();
+    }
 
 	private void playerDie()
 	{
@@ -93,7 +94,7 @@ public class Player : MonoBehaviour
 		Counter = Time.time * fixedDelta;
 		PlayerMovement();
 		PlayerManager.Instance.SetPlayerPosition(transform.position);
-		PlayerAim();
+
 
 		if (Counter >= initialBulletTime && Input.GetMouseButton(1) && PlayerManager.Instance.bulletSelected == 0)
 		{
@@ -105,7 +106,6 @@ public class Player : MonoBehaviour
 			Shooting();
 			initialBulletCoreTime = Counter + fireRateCore;
 		}
-
 	}
 
 	void PlayerMovement()
@@ -116,13 +116,13 @@ public class Player : MonoBehaviour
 		if (rb2d.velocity.x > PlayerManager.Instance.speed || rb2d.velocity.x < PlayerManager.Instance.speed)
 		{
 			rb2d.velocity = Vector2.zero;
-            FindObjectOfType<AudioManager>().Stop("Propulsion");
+            AudioManager.Instance.Stop("Propulsion");
             //animator.SetBool("Moving", false);
         }
 
         rb2d.AddForce(Movement * PlayerManager.Instance.speed * fixedDelta, ForceMode2D.Impulse);
         //animator.SetBool("Moving", true);
-        FindObjectOfType<AudioManager>().Play("Propulsion");
+        AudioManager.Instance.Play("Propulsion");
 
     }
     void PlayerAim()
@@ -140,7 +140,7 @@ public class Player : MonoBehaviour
 		bulletObject = Instantiate(bullets[PlayerManager.Instance.bulletSelected], firePoint.position, firePoint.rotation);
 		rb2dBullet = bulletObject.GetComponent<Rigidbody2D>();
 		rb2dBullet.AddForce(firePoint.up * bulletSpeed, ForceMode2D.Impulse);
-        FindObjectOfType<AudioManager>().Play("Shoot");
+        AudioManager.Instance.Play("Shoot");
         Destroy(bulletObject, range);
 		PlayerManager.Instance.ammo--;
 	}

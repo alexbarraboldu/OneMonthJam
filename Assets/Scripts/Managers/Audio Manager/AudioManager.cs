@@ -78,8 +78,7 @@ public class AudioManager : MonoBehaviour
     {
         foreach (Sound s in sounds)
         {
-            s.source.Stop();
-            s.source.volume = 0;
+            s.source.Stop();          
         }
     }
 }

@@ -14,8 +14,13 @@ public class Defeat : MonoBehaviour
     {
         scoreText = GMScoreText.GetComponent<Text>();
         scoreText.text = "SCORE: " + GameController.Instance.score.ToString();
-        //score = GameController.Instance.score;
     }
+
+    private void Update()
+    {
+        scoreText.text = "SCORE: " + GameController.Instance.score.ToString();
+    }
+
 
     public void PlayAgain ()
     {

@@ -11,10 +11,11 @@ public class Core : MonoBehaviour
     private void Start()
     {
         anim = gameObject.GetComponent<Animator>();
+        //if (lifeslider == null) lifeslider = GetComponent<Slider>();
     }
     private void Update()
     {
-        lifeslider.value = life;
+       if (lifeslider != null) lifeslider.value = life;
         if (life <= 0)
         {
             Destroy(gameObject);
@@ -26,7 +27,7 @@ public class Core : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            anim.SetBool("Hit", true);
+           // anim.SetBool("Hit", true);
             life -= PlayerManager.Instance.enemyDmg;
 
         }

@@ -9,7 +9,7 @@ public class GameController : MonoBehaviour
 {
     public static GameController Instance { get; private set; }
 
-    public int score = 0;
+    public int score;
     public int hiscore;
     public int record;
 
@@ -25,13 +25,13 @@ public class GameController : MonoBehaviour
             Debug.Log("Error: Duplicated " + this + "in the scene");
         }
 
+        score = 0;
 
         FindObjectOfType<AudioManager>().Play("MenuMusic");
         StreamReader reader = new StreamReader("Hiscore.txt");
         string hiscorestring = reader.ReadLine();
         hiscore = int.Parse(hiscorestring);
         reader.Close();
-        // BeginGame();
 
     }
 
@@ -42,12 +42,12 @@ public class GameController : MonoBehaviour
             Application.Quit();
     }
 
-    void FixedUpdate()
-    {
+    //void FixedUpdate()
+    //{
         //score = 0;
         //scoreController.Instance.textScore.text = "PUNTOS:" + score;
         //scoreController.Instance.textHiscore.text = "META: " + hiscore;
-    }
+    //}
     public void IncrementScore()
     {
         score++;
@@ -55,7 +55,7 @@ public class GameController : MonoBehaviour
         //scoreController.Instance.textScore.text = "PUNTOS:" + score;
         if (score > hiscore)
         {
-            hiscore = Instance.score;
+            hiscore = score;
             //scoreController.Instance.textHiscore.text = "META: " + hiscore;
 
             // Save the new hiscore

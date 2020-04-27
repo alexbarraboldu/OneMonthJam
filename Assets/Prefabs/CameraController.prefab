@@ -840,6 +840,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TextScore: {fileID: 3269334172837223394}
   TextHiScore: {fileID: 3970290820354009416}
+  TextFakeCores: {fileID: 459192591219930865}
+  TextBulletsRemain: {fileID: 4989495524508370948}
 --- !u!1 &6543509782389531622
 GameObject:
   m_ObjectHideFlags: 0

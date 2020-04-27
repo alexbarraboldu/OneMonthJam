@@ -136,12 +136,25 @@ public class Player : MonoBehaviour
 	}
 	void Shooting()
 	{
-		if (PlayerManager.Instance.ammo <= 0) return;
-		bulletObject = Instantiate(bullets[PlayerManager.Instance.bulletSelected], firePoint.position, firePoint.rotation);
-		rb2dBullet = bulletObject.GetComponent<Rigidbody2D>();
-		rb2dBullet.AddForce(firePoint.up * bulletSpeed, ForceMode2D.Impulse);
-        AudioManager.Instance.Play("Shoot");
-        Destroy(bulletObject, range);
-		PlayerManager.Instance.ammo--;
+		if (PlayerManager.Instance.bulletSelected == 0 && PlayerManager.Instance.ammo > 0)
+		{
+
+			bulletObject = Instantiate(bullets[PlayerManager.Instance.bulletSelected], firePoint.position, firePoint.rotation);
+			rb2dBullet = bulletObject.GetComponent<Rigidbody2D>();
+			rb2dBullet.AddForce(firePoint.up * bulletSpeed, ForceMode2D.Impulse);
+			AudioManager.Instance.Play("Shoot");
+			Destroy(bulletObject, range);
+			PlayerManager.Instance.ammo--;
+		}
+
+		if (PlayerManager.Instance.bulletSelected == 1 && PlayerManager.Instance.ammoCore > 0)
+		{
+			bulletObject = Instantiate(bullets[PlayerManager.Instance.bulletSelected], firePoint.position, firePoint.rotation);
+			rb2dBullet = bulletObject.GetComponent<Rigidbody2D>();
+			rb2dBullet.AddForce(firePoint.up * bulletSpeed, ForceMode2D.Impulse);
+			AudioManager.Instance.Play("Shoot");
+			Destroy(bulletObject, range);
+			PlayerManager.Instance.ammoCore--;
+		}
 	}
 }

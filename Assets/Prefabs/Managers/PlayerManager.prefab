@@ -44,6 +44,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IMMORTAL: 0
-  health: 1
-  speed: 0.5
+  health: 3
+  speed: 0.7
+  dmg: 0
+  ammo: 50
+  ammoCore: 10
+  bulletSelected: 0
   PlayerPosition: {x: 0, y: 0}
+  streak: 0
+  lvl: 0
+  needed: 0
+  enemyLife: 0
+  enemyDmg: 0
+  CoresInGame: []
+  lvl1: {fileID: 21300000, guid: 2f281819d99427d4cb1e90bdbc444b3a, type: 3}
+  lvl2: {fileID: 21300000, guid: 954f2021a43f0774ea110f55d387ed1d, type: 3}
+  lvl3: {fileID: 21300000, guid: 9e5d9cdd136b9ab4d8ed27537b10ff80, type: 3}
+  lvl4: {fileID: 21300000, guid: 2ca0696af14e44c4b96d98bb15db8914, type: 3}
+  lvl5: {fileID: 21300000, guid: 63a48f6f223c2e34baaacac8eee1e6c1, type: 3}

@@ -28,7 +28,7 @@ public class HUDScript : MonoBehaviour
         // UPDATE KEYSCOUNTER
         //if (!PlayerManager.Instance.IMMORTAL) KeysCounterText.text = PlayerManager.Instance.keys.ToString() + " de " + PlayerManager.Instance.GetCurrentLVLKeys().ToString();
         //else KeysCounterText.text = PlayerManager.Instance.keys.ToString() + " de " + PlayerManager.Instance.GetCurrentLVLKeys().ToString() + "	IMMORTAL";
-        FakeCores.text = PlayerManager.Instance.ammo.ToString();
+        FakeCores.text = PlayerManager.Instance.ammoCore.ToString();
         BulletsRemain.text = PlayerManager.Instance.ammo.ToString();
         Score.text = "Score: " + GameController.Instance.score.ToString();
         HiScore.text = "HighScore: " + GameController.Instance.hiscore.ToString();

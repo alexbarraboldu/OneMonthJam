@@ -16,7 +16,7 @@ public class PlayerManager : MonoBehaviour
 	public float health;
 	public float speed;
     public int dmg;
-	public int ammo;
+	public int ammo, ammoCore;
 	public int bulletSelected;
 	public Vector2 PlayerPosition;
     public int streak;

@@ -119,11 +119,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7637972202823583983, guid: 7c708056c16455f48826066d54c76a40,
-        type: 3}
-      propertyPath: m_Name
-      value: GameManager
-      objectReference: {fileID: 0}
     - target: {fileID: 7637972202823583969, guid: 7c708056c16455f48826066d54c76a40,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -178,6 +173,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7637972202823583983, guid: 7c708056c16455f48826066d54c76a40,
+        type: 3}
+      propertyPath: m_Name
+      value: GameManager
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c708056c16455f48826066d54c76a40, type: 3}
@@ -290,11 +290,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1013479324906040737, guid: 8fe3d388215c7864faf39ffdfd362799,
-        type: 3}
-      propertyPath: m_Name
-      value: AudioManager
-      objectReference: {fileID: 0}
     - target: {fileID: 1013479324906040671, guid: 8fe3d388215c7864faf39ffdfd362799,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -475,6 +470,11 @@ PrefabInstance:
       propertyPath: sounds.Array.data[1].name
       value: Enemy_Death
       objectReference: {fileID: 0}
+    - target: {fileID: 1013479324906040737, guid: 8fe3d388215c7864faf39ffdfd362799,
+        type: 3}
+      propertyPath: m_Name
+      value: AudioManager
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8fe3d388215c7864faf39ffdfd362799, type: 3}
 --- !u!1001 &2051296247
@@ -484,16 +484,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8000889822608860366, guid: aeb0b218a24e43747973b81c9fa3ca7d,
-        type: 3}
-      propertyPath: m_Name
-      value: PlayerManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 8000889822608860366, guid: aeb0b218a24e43747973b81c9fa3ca7d,
-        type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
     - target: {fileID: 8000889822608860364, guid: aeb0b218a24e43747973b81c9fa3ca7d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -549,45 +539,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8000889822608860367, guid: aeb0b218a24e43747973b81c9fa3ca7d,
+    - target: {fileID: 8000889822608860366, guid: aeb0b218a24e43747973b81c9fa3ca7d,
         type: 3}
-      propertyPath: lvl1
-      value: 
-      objectReference: {fileID: 21300000, guid: 2f281819d99427d4cb1e90bdbc444b3a,
-        type: 3}
-    - target: {fileID: 8000889822608860367, guid: aeb0b218a24e43747973b81c9fa3ca7d,
-        type: 3}
-      propertyPath: lvl2
-      value: 
-      objectReference: {fileID: 21300000, guid: 954f2021a43f0774ea110f55d387ed1d,
-        type: 3}
-    - target: {fileID: 8000889822608860367, guid: aeb0b218a24e43747973b81c9fa3ca7d,
-        type: 3}
-      propertyPath: lvl3
-      value: 
-      objectReference: {fileID: 21300000, guid: 9e5d9cdd136b9ab4d8ed27537b10ff80,
-        type: 3}
-    - target: {fileID: 8000889822608860367, guid: aeb0b218a24e43747973b81c9fa3ca7d,
-        type: 3}
-      propertyPath: lvl4
-      value: 
-      objectReference: {fileID: 21300000, guid: 2ca0696af14e44c4b96d98bb15db8914,
-        type: 3}
-    - target: {fileID: 8000889822608860367, guid: aeb0b218a24e43747973b81c9fa3ca7d,
-        type: 3}
-      propertyPath: lvl5
-      value: 
-      objectReference: {fileID: 21300000, guid: 63a48f6f223c2e34baaacac8eee1e6c1,
-        type: 3}
-    - target: {fileID: 8000889822608860367, guid: aeb0b218a24e43747973b81c9fa3ca7d,
-        type: 3}
-      propertyPath: speed
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 8000889822608860367, guid: aeb0b218a24e43747973b81c9fa3ca7d,
-        type: 3}
-      propertyPath: health
-      value: 3
+      propertyPath: m_Name
+      value: PlayerManager
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aeb0b218a24e43747973b81c9fa3ca7d, type: 3}

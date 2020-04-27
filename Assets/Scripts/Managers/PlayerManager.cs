@@ -48,6 +48,7 @@ public class PlayerManager : MonoBehaviour
 		{
 			Debug.Log("Error: Duplicated " + this + "in the scene");
 		}
+        health = 3;
 		bulletSelected = 0;
         needed = 5;
         streak = 0;
@@ -71,11 +72,17 @@ public class PlayerManager : MonoBehaviour
 	{
 		return PlayerPosition;
 	}
-	public void reset()
-	{
-		health = 100;
-		speed = 1.25f;
-	}
+    public void reset()
+    {
+        health = 3;
+        bulletSelected = 0;
+        needed = 5;
+        streak = 0;
+        lvl = 0;
+        dmg = 1;
+        enemyLife = 1;
+        enemyDmg = 1;
+    }
     public void increaseStreak()
     {
         if (streak < needed){
@@ -143,6 +150,6 @@ public class PlayerManager : MonoBehaviour
 
     public void DefeatScene ()
     {
-        SceneManager.LoadScene("DefeatScene");
+        ScenesManager.Instance.ChangeScene("DefeatScene");
     }
 }

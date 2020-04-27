@@ -165,5 +165,5 @@ MonoBehaviour:
   Objective: {fileID: 1064658938892698757, guid: cfa0211c11e37554f845863b458ca91f,
     type: 3}
   life: 3
-  Speed: 0.02
+  Speed: 0.01
   arrived: 0

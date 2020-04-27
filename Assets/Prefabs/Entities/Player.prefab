@@ -211,6 +211,7 @@ MonoBehaviour:
   bullets:
   - {fileID: 767959860981413116, guid: bc8a17b7126f62743bbc986b520ef614, type: 3}
   - {fileID: 9210460430922729947, guid: 3da1a72f0422d0c41aebb4445e2ebdfc, type: 3}
-  bulletSpeed: {x: 25, y: 25}
+  bulletSpeed: {x: 45, y: 45}
   fireRate: 2
+  fireRateCore: 70
   range: 2

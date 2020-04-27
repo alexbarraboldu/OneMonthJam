@@ -22,11 +22,14 @@ public class Player : MonoBehaviour
 	public GameObject[] bullets;
 	public Vector2 bulletSpeed;
 	public float fireRate;
+	public float fireRateCore;
+
 	public float range;
 	//  VARIABLES FOR GUNS
 	private Rigidbody2D rb2dBullet;
 	private GameObject bulletObject;
 	private float initialBulletTime;
+	private float initialBulletCoreTime;
 	private float Counter;
 
 
@@ -55,8 +58,11 @@ public class Player : MonoBehaviour
 
 		if (Input.GetKeyDown(KeyCode.Space))
 		{
-			if (PlayerManager.Instance.bulletSelected == 1) PlayerManager.Instance.bulletSelected = 0;
-			else PlayerManager.Instance.bulletSelected = 1;
+			//if (Counter >= initialBulletCoreTime)
+			//{
+				if (PlayerManager.Instance.bulletSelected == 1) PlayerManager.Instance.bulletSelected = 0;
+				else PlayerManager.Instance.bulletSelected = 1;
+		//	}
 		}
 	}
 
@@ -79,11 +85,17 @@ public class Player : MonoBehaviour
 		PlayerManager.Instance.SetPlayerPosition(transform.position);
 		PlayerAim();
 
-		if (Counter >= initialBulletTime && Input.GetMouseButton(1))
+		if (Counter >= initialBulletTime && Input.GetMouseButton(1) && PlayerManager.Instance.bulletSelected == 0)
 		{
 			Shooting();
 			initialBulletTime = Counter + fireRate;
 		}
+		if (Counter >= initialBulletCoreTime && Input.GetMouseButton(1) && PlayerManager.Instance.bulletSelected == 1)
+		{
+			Shooting();
+			initialBulletCoreTime = Counter + fireRateCore;
+		}
+
 	}
 
 	void PlayerMovement()

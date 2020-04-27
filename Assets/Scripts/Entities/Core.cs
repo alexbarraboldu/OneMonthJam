@@ -26,7 +26,7 @@ public class Core : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            //anim.SetBool("Hit", true);
+            anim.SetBool("Hit", true);
             life -= PlayerManager.Instance.enemyDmg;
 
         }

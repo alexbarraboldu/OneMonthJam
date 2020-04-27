@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
 	public int life;
 	public float Speed;
 	public bool arrived;
+    public GameObject explosion;
 
 	private void Start()
 	{
@@ -73,6 +74,7 @@ public class Enemy : MonoBehaviour
 	{
 		if (collision.gameObject.tag == "Bullet")
 		{
+            explosion = Instantiate(explosion);
 			Destroy(collision.gameObject);
 			life -= PlayerManager.Instance.dmg;
 		}

@@ -46,3 +46,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: BackGround
+    uniqueID: 69508965
+    locked: 0
+  - name: Entities
+    uniqueID: 1697105049
+    locked: 0
+  - name: Effects
+    uniqueID: 3734542535
+    locked: 0
+  - name: UI
+    uniqueID: 26294339
+    locked: 0

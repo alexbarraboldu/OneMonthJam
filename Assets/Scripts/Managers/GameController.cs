@@ -13,19 +13,6 @@ public class GameController : MonoBehaviour
     public int hiscore;
     public int record;
 
-    void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(this);
-        }
-        else
-        {
-            Debug.Log("Error: Duplicated " + this + "in the scene");
-        }
-    }
-
     void Start()
     {
         if (Instance == null)
@@ -57,7 +44,7 @@ public class GameController : MonoBehaviour
 
     void FixedUpdate()
     {
-        score = 0;
+        //score = 0;
         //scoreController.Instance.textScore.text = "PUNTOS:" + score;
         //scoreController.Instance.textHiscore.text = "META: " + hiscore;
     }
@@ -78,4 +65,9 @@ public class GameController : MonoBehaviour
         }
     }
 
+    public string GetIndexScene()
+    {
+
+        return SceneManager.GetActiveScene().name;
+    }
 }

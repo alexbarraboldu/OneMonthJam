@@ -25,7 +25,7 @@ public class Enemy : MonoBehaviour
 	{
 		Objective.position = SearchObjective();
 
-	/*	if (!arrived)*/ transform.position = Vector2.MoveTowards(transform.position, Objective.position, Speed * Time.deltaTime * 1000.0f);
+		transform.position = Vector2.MoveTowards(transform.position, Objective.position, Speed * Time.deltaTime * 1000.0f);
 
 		if (life <= 0)
 		{
@@ -40,18 +40,23 @@ public class Enemy : MonoBehaviour
 	{
 		float lowestDistance = 99999;
 		Vector2 position = Vector2.zero;
-		//for (int i = 0; i < Manager.Instance.Core.Length; i++)
-		//{
-		//    if (Vector3.Distance(transform.position, Manager.Instance.Core[i].transform.position) < lowestDistance)
-		//    {
-		//        lowestDistance = Vector3.Distance(transform.position, Manager.Instance.Core[i].transform.position);
-		//        position = Manager.Instance.Core[i].transform.position;
-		//    }
-		//}
+
+
+		if (PlayerManager.Instance.CoresInGame.Length == 1) return position;
+
+		for (int i = 0; i < PlayerManager.Instance.CoresInGame.Length; i++)
+		{
+			if (Vector3.Distance(transform.position, PlayerManager.Instance.CoresInGame[i].transform.position) < lowestDistance)
+			{
+				lowestDistance = Vector3.Distance(transform.position, PlayerManager.Instance.CoresInGame[i].transform.position);
+				position = PlayerManager.Instance.CoresInGame[i].transform.position;
+			}
+		}
+
 		//if (Vector3.Distance(transform.position, RialMainCore.transform.position) < lowestDistance)
 		//{
-		//    lowestDistance = Vector3.Distance(transform.position, RialMainCore.transform.position);
-		//    position = RialMainCore.transform.position;
+		//	lowestDistance = Vector3.Distance(transform.position, RialMainCore.transform.position);
+		//	position = RialMainCore.transform.position;
 		//}
 
 		return position;
@@ -59,10 +64,6 @@ public class Enemy : MonoBehaviour
 
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
-		//if (collision.gameObject.tag == "Core")
-		//{
-		//	arrived = true;
-		//}
 		if (collision.gameObject.tag == "Player")
 		{
 			PlayerManager.Instance.health -= PlayerManager.Instance.enemyDmg;

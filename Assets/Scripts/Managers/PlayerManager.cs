@@ -26,6 +26,10 @@ public class PlayerManager : MonoBehaviour
 
     public int enemyLife;
     public int enemyDmg;
+
+    [Header("Variables for Core:")]
+    public Core[] CoresInGame;
+
     //SKINS
     public Sprite lvl1;
     public Sprite lvl2;
@@ -53,19 +57,12 @@ public class PlayerManager : MonoBehaviour
         enemyDmg = 1;
     }
 
-	//private void Update()
-	//{
-	//    //if (SceneManager.GetActiveScene().name == "DEV_TileMap-ZonaHostil-3" && SpawnerManager.Instance.ActualRound >= 5)
-	//    //{
-	//    //    Victory();
-	//    //}
-	//}
+    private void Update()
+    {
+        CoresInGame = FindObjectsOfType<Core>();
+    }
 
-	private void Victory()
-	{
-		//PlayerSceneManager.Instance.goFrontScene(SceneManager.GetActiveScene().buildIndex);
-	}
-	public void SetPlayerPosition(Vector2 position)
+    public void SetPlayerPosition(Vector2 position)
 	{
 		PlayerPosition = position;
 	}

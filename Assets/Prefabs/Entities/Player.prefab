@@ -215,3 +215,5 @@ MonoBehaviour:
   fireRate: 2
   fireRateCore: 70
   range: 2
+  FakeCore: {fileID: 1064658938892698755, guid: 7965a107cae37ba42b63daeae3a2983c,
+    type: 3}

@@ -8,4 +8,6 @@ public class Bullet : MonoBehaviour
     {
         Physics2D.IgnoreCollision(GameObject.FindGameObjectWithTag("Core").GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>(), true);
     }
+
+    //void
 }

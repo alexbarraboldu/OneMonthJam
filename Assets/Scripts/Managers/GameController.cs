@@ -60,7 +60,6 @@ public class GameController : MonoBehaviour
         score = 0;
         //scoreController.Instance.textScore.text = "PUNTOS:" + score;
         //scoreController.Instance.textHiscore.text = "META: " + hiscore;
-
     }
     public void IncrementScore()
     {

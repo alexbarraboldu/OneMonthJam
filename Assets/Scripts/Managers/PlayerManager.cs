@@ -82,6 +82,7 @@ public class PlayerManager : MonoBehaviour
         dmg = 1;
         enemyLife = 1;
         enemyDmg = 1;
+        GameController.Instance.score = 0;
     }
     public void increaseStreak()
     {

@@ -27,11 +27,14 @@ public class Player : MonoBehaviour
 	public float range;
 	//  VARIABLES FOR GUNS
 	private Rigidbody2D rb2dBullet;
-	private GameObject bulletObject;
+	public GameObject bulletObject;
+	public GameObject auxBulletObject;
 	private float initialBulletTime;
 	private float initialBulletCoreTime;
+	private float initialBulletCoreLifeTime;
 	private float Counter;
 
+	public GameObject FakeCore;
 
 	//VARIABLES FOR ANIMATIONS
 	//private Animator animator;
@@ -46,23 +49,29 @@ public class Player : MonoBehaviour
 		// GET ANIMATOR COMPONENTS
 		//animator = GetComponent<Animator>();
 		//moveParamID = Animator.StringToHash("Moving");
-
-		//PlayerSceneManager.Instance.isSceneHostile();
 	}
 
 	private void Update()
 	{
 		if (PlayerManager.Instance.health <= 0 && !PlayerManager.Instance.IMMORTAL) playerDie();
+
 		EnemySpawner.Instance.Spawner();
 		EnemySpawner.Instance.EnemyChecker();
 
 		if (Input.GetKeyDown(KeyCode.Space))
 		{
-			//if (Counter >= initialBulletCoreTime)
-			//{
-				if (PlayerManager.Instance.bulletSelected == 1) PlayerManager.Instance.bulletSelected = 0;
-				else PlayerManager.Instance.bulletSelected = 1;
-		//	}
+			if (PlayerManager.Instance.bulletSelected == 1) PlayerManager.Instance.bulletSelected = 0;
+			else PlayerManager.Instance.bulletSelected = 1;
+		}
+
+
+		if (bulletObject != null)
+		{
+			if (Input.GetKeyDown(KeyCode.E) && bulletObject.tag == "BulletCore")
+			{
+				Instantiate( FakeCore, bulletObject.transform.position,Quaternion.identity);
+				Destroy(bulletObject.gameObject);
+			}
 		}
 	}
 

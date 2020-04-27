@@ -143,4 +143,9 @@ public class PlayerManager : MonoBehaviour
 	{
 		ammo +=2 + (EnemySpawner.Instance.ActualRound / 2);
 	}
+
+    public void DefeatScene ()
+    {
+        SceneManager.LoadScene("DefeatScene");
+    }
 }

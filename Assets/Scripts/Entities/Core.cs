@@ -8,7 +8,11 @@ public class Core : MonoBehaviour
 
     private void Update()
     {
-        if (life <= 0) Destroy(gameObject);
+        if (life <= 0)
+        {
+            Destroy(gameObject);
+            PlayerManager.Instance.DefeatScene();
+        }
     }
 
     private void OnCollisionStay2D(Collision2D collision)

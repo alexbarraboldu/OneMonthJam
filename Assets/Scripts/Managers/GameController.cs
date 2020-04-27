@@ -9,7 +9,7 @@ public class GameController : MonoBehaviour
 {
     public static GameController Instance { get; private set; }
 
-    public int score;
+    public int score = 0;
     public int hiscore;
     public int record;
 

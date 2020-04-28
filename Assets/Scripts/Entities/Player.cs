@@ -129,18 +129,19 @@ public class Player : MonoBehaviour
     }
     void PlayerAim()
 	{
-		mousePosition = Input.mousePosition;
-		mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
+		mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-		Vector2 lookDirection = mousePosition - rb2d.position;
-		float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg - 90f;
-		rb2d.rotation = angle;
+        //habibi
+        transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(mousePosition.y - transform.position.y, mousePosition.x - transform.position.x) * Mathf.Rad2Deg - 90);
+
+  //      Vector2 lookDirection = mousePosition - rb2d.position;
+		//float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg - 90f;
+		//rb2d.rotation = angle;
 	}
 	void Shooting()
 	{
 		if (PlayerManager.Instance.bulletSelected == 0 && PlayerManager.Instance.ammo > 0)
 		{
-
 			bulletObject = Instantiate(bullets[PlayerManager.Instance.bulletSelected], firePoint.position, firePoint.rotation);
 			rb2dBullet = bulletObject.GetComponent<Rigidbody2D>();
 			rb2dBullet.AddForce(firePoint.up * bulletSpeed, ForceMode2D.Impulse);

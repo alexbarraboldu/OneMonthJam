@@ -9,6 +9,8 @@ TagManager:
   - Wall
   - BulletCore
   - Core
+  - loot
+  - meteor
   layers:
   - Default
   - TransparentFX

@@ -52,7 +52,7 @@ public class PlayerManager : MonoBehaviour
 		bulletSelected = 0;
         needed = 5;
         streak = 0;
-        lvl = 0;
+        lvl = 1;
         dmg = 1;
         enemyLife = 1;
         enemyDmg = 1;
@@ -78,7 +78,7 @@ public class PlayerManager : MonoBehaviour
         bulletSelected = 0;
         needed = 5;
         streak = 0;
-        lvl = 0;
+        lvl = 1;
         dmg = 1;
         enemyLife = 1;
         enemyDmg = 1;
@@ -124,6 +124,8 @@ public class PlayerManager : MonoBehaviour
                 dmg++;
                 health++;
                 enemyLife = 8;
+                Player a = GameObject.Find("Player").GetComponent<Player>();
+                a.bulletSpeed.Set(a.bulletSpeed.x * 1.5f, a.bulletSpeed.y * 1.5f);
                 break;
             case 4:
                 FindObjectOfType<SkinController>().GetComponent<SpriteRenderer>().sprite = lvl4;

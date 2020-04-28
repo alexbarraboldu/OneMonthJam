@@ -19,7 +19,9 @@ public class Player : MonoBehaviour
 	[Header("Variables for guns:")]
 	[Space(10)]
 	public Transform firePoint;
-	public GameObject[] bullets;
+    public Transform firePointlvl2;
+    public Transform firePoint2lvl2;
+    public GameObject[] bullets;
 	public Vector2 bulletSpeed;
 	public float fireRate;
 	public float fireRateCore;
@@ -27,7 +29,8 @@ public class Player : MonoBehaviour
 	public float range;
 	//  VARIABLES FOR GUNS
 	private Rigidbody2D rb2dBullet;
-	public GameObject bulletObject;
+    private Rigidbody2D rb2dAuxBullet;
+    public GameObject bulletObject;
 	public GameObject auxBulletObject;
 	private float initialBulletTime;
 	private float initialBulletCoreTime;
@@ -64,7 +67,7 @@ public class Player : MonoBehaviour
 			if (PlayerManager.Instance.bulletSelected == 1) PlayerManager.Instance.bulletSelected = 0;
 			else PlayerManager.Instance.bulletSelected = 1;
 		}
-
+        
 
 		if (bulletObject != null)
 		{
@@ -139,7 +142,7 @@ public class Player : MonoBehaviour
 	}
 	void Shooting()
 	{
-		if (PlayerManager.Instance.bulletSelected == 0 && PlayerManager.Instance.ammo > 0)
+		if (PlayerManager.Instance.bulletSelected == 0 && PlayerManager.Instance.ammo > 0 && PlayerManager.Instance.lvl == 1)
 		{
 			bulletObject = Instantiate(bullets[PlayerManager.Instance.bulletSelected], firePoint.position, firePoint.rotation);
 			rb2dBullet = bulletObject.GetComponent<Rigidbody2D>();
@@ -148,8 +151,35 @@ public class Player : MonoBehaviour
 			Destroy(bulletObject, range);
 			PlayerManager.Instance.ammo--;
 		}
+        if (PlayerManager.Instance.bulletSelected == 0 && PlayerManager.Instance.ammo > 0 && PlayerManager.Instance.lvl == 2)
+        {
+            bulletObject = Instantiate(bullets[PlayerManager.Instance.bulletSelected], firePointlvl2.position, firePoint.rotation);
+            auxBulletObject = Instantiate(bullets[PlayerManager.Instance.bulletSelected], firePoint2lvl2.position, firePoint.rotation);
+            rb2dBullet = bulletObject.GetComponent<Rigidbody2D>();
+            rb2dBullet.AddForce(firePointlvl2.up * bulletSpeed, ForceMode2D.Impulse);
+            rb2dAuxBullet = auxBulletObject.GetComponent<Rigidbody2D>();
+            rb2dAuxBullet.AddForce(firePoint2lvl2.up * bulletSpeed, ForceMode2D.Impulse);
+            AudioManager.Instance.Play("Shoot");
+            Destroy(bulletObject, range);
+            Destroy(auxBulletObject, range);
+            PlayerManager.Instance.ammo--;
+        }
+        if (PlayerManager.Instance.bulletSelected == 0 && PlayerManager.Instance.ammo > 0 && PlayerManager.Instance.lvl == 3)
+        {
+            bulletObject = Instantiate(bullets[PlayerManager.Instance.bulletSelected], firePointlvl2.position, firePoint.rotation);
+            auxBulletObject = Instantiate(bullets[PlayerManager.Instance.bulletSelected], firePoint2lvl2.position, firePoint.rotation);
+            rb2dBullet = bulletObject.GetComponent<Rigidbody2D>();
+            rb2dBullet.AddForce(firePointlvl2.up * bulletSpeed, ForceMode2D.Impulse);
+            rb2dAuxBullet = auxBulletObject.GetComponent<Rigidbody2D>();
+            rb2dAuxBullet.AddForce(firePoint2lvl2.up * bulletSpeed, ForceMode2D.Impulse);
+            AudioManager.Instance.Play("Shoot");
+            Destroy(bulletObject, range);
+            Destroy(auxBulletObject, range);
+            PlayerManager.Instance.ammo--;
+        }
 
-		if (PlayerManager.Instance.bulletSelected == 1 && PlayerManager.Instance.ammoCore > 0)
+
+        if (PlayerManager.Instance.bulletSelected == 1 && PlayerManager.Instance.ammoCore > 0)
 		{
 			bulletObject = Instantiate(bullets[PlayerManager.Instance.bulletSelected], firePoint.position, firePoint.rotation);
 			rb2dBullet = bulletObject.GetComponent<Rigidbody2D>();

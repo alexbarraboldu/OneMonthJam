@@ -59,7 +59,7 @@ public class EnemySpawner : MonoBehaviour
 	}
 	private Vector2 GenerateRawPosition()
 	{
-			return new Vector2(Random.Range(MapTopLeftLimit.x, MapBotRightLimit.x), Random.Range(MapBotRightLimit.y, MapTopLeftLimit.y));
+		return new Vector2(Random.Range(MapTopLeftLimit.x, MapBotRightLimit.x), Random.Range(MapBotRightLimit.y, MapTopLeftLimit.y));
 	}
 
 	public Vector2 CheckRawPosition()

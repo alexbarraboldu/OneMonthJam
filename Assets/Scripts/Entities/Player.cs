@@ -73,8 +73,9 @@ public class Player : MonoBehaviour
 		{
 			if (Input.GetKeyDown(KeyCode.E) && bulletObject.tag == "BulletCore")
 			{
-				Instantiate( FakeCore, bulletObject.transform.position,Quaternion.identity);
-				Destroy(bulletObject.gameObject);
+                GameObject a = Instantiate(FakeCore);
+                a.transform.position = bulletObject.transform.position;
+                Destroy(bulletObject.gameObject);
 			}
 		}
         PlayerAim();

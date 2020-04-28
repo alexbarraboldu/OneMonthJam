@@ -470,6 +470,11 @@ PrefabInstance:
       propertyPath: sounds.Array.data[1].name
       value: Enemy_Death
       objectReference: {fileID: 0}
+    - target: {fileID: 1013479324906040736, guid: 8fe3d388215c7864faf39ffdfd362799,
+        type: 3}
+      propertyPath: sounds.Array.data[11].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 5ecc07cc2c5f5b54ca96749c6b02eb4e, type: 3}
     - target: {fileID: 1013479324906040737, guid: 8fe3d388215c7864faf39ffdfd362799,
         type: 3}
       propertyPath: m_Name

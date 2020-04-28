@@ -12,6 +12,9 @@ public class Defeat : MonoBehaviour
 
     void Start()
     {
+        AudioManager.Instance.StopAll();
+        AudioManager.Instance.Play("GameOverMusic");
+        AudioManager.Instance.Play("MenuMusic");
         scoreText = GMScoreText.GetComponent<Text>();
         scoreText.text = "SCORE: " + GameController.Instance.score.ToString();
     }

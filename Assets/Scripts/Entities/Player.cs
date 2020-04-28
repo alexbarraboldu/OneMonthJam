@@ -42,7 +42,6 @@ public class Player : MonoBehaviour
 
 	void Start()
 	{
-		Cursor.visible = false;
 
 		FindObjectOfType<AudioManager>().Play("GameMusic");
         rb2d = GetComponent<Rigidbody2D>();

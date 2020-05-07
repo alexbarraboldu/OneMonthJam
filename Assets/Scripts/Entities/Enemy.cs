@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour
 	public int life;
 	public float Speed;
 	public bool arrived;
-    public GameObject explosion;
+	public GameObject explosion;
 
 	private void Start()
 	{
@@ -74,14 +74,10 @@ public class Enemy : MonoBehaviour
 	{
 		if (collision.gameObject.tag == "Bullet")
 		{
-            GameObject clone = Instantiate(explosion, this.transform.position, Quaternion.identity);
-            Destroy(collision.gameObject);
-            Destroy(clone, 1.0f);
-            life -= PlayerManager.Instance.dmg;
-		}
-		if (collision.gameObject.tag == "BulletCore")
-		{
+			GameObject clone = Instantiate(explosion, this.transform.position, Quaternion.identity);
 			Destroy(collision.gameObject);
+			Destroy(clone, 1.0f);
+			life -= PlayerManager.Instance.dmg;
 		}
 	}
 }

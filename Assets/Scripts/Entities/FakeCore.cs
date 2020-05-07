@@ -4,18 +4,21 @@ using UnityEngine;
 
 public class FakeCore : MonoBehaviour
 {
-    public int life;
+	public int life;
 
-    void Update()
-    {
-        if (life <= 0)
-            Destroy(gameObject);
-    }
+	void Update()
+	{
+		if (life <= 0)
+		{
+			Destroy(gameObject);
+		}
+	}
 
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Enemy")
-            life -= PlayerManager.Instance.enemyDmg;
-    }
-
+	private void OnCollisionStay2D(Collision2D collision)
+	{
+		if (collision.gameObject.tag == "Enemy")
+		{
+			life -= PlayerManager.Instance.enemyDmg;
+		}
+	}
 }

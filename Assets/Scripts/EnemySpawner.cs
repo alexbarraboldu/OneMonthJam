@@ -38,7 +38,6 @@ public class EnemySpawner : MonoBehaviour
 		if (Instance == null)
 		{
 			Instance = this;
-			//DontDestroyOnLoad(this);
 		}
 		else
 		{
@@ -114,6 +113,7 @@ public class EnemySpawner : MonoBehaviour
 			if (Counter >= 200f)
 			{
 				ActualRound++;
+				if (ActualRound % 2 == 1) { PlayerManager.Instance.enemyDmg++; }
 				RoundSpawnComplete = false;
 				Counter = 0;
 			}

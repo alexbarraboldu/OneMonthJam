@@ -33,12 +33,11 @@ public class Core : MonoBehaviour
 		}
 		
 	}
-	void OnCollisionExit2D(Collision2D coll)
+	void OnCollisionExit2D(Collision2D collision)
 	{
-		if (coll.gameObject.tag.Equals("Enemy"))
+		if (collision.gameObject.tag.Equals("Enemy"))
 		{
 			anim.SetBool("Hit", false);
-
 		}
 	}
 }

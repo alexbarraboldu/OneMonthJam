@@ -102,6 +102,7 @@ public class PlayerManager : MonoBehaviour
     }
     void UpgradeSkin()
     {
+        Player a = GameObject.Find("Player").GetComponent<Player>();
         switch (lvl)
         {
             case 1:
@@ -124,7 +125,6 @@ public class PlayerManager : MonoBehaviour
                 dmg++;
                 health++;
                 enemyLife = 8;
-                Player a = GameObject.Find("Player").GetComponent<Player>();
                 a.bulletSpeed.Set(a.bulletSpeed.x * 1.5f, a.bulletSpeed.y * 1.5f);
                 break;
             case 4:
@@ -133,6 +133,7 @@ public class PlayerManager : MonoBehaviour
                 dmg++;
                 health++;
                 enemyLife = 10;
+                a.bulletSpeed.Set(a.bulletSpeed.x * 1.5f, a.bulletSpeed.y * 1.5f);
                 break;
             case 5:
                 FindObjectOfType<SkinController>().GetComponent<SpriteRenderer>().sprite = lvl5;
@@ -140,6 +141,7 @@ public class PlayerManager : MonoBehaviour
                 dmg++;
                 health++;
                 enemyLife = 12;
+                a.bulletSpeed.Set(a.bulletSpeed.x * 1.5f, a.bulletSpeed.y * 1.5f);
                 break;
             default:
                 break;
